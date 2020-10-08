@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ username }}'s | HyStats</title>
+    <style>
+        body {
+            --cmpBgColor: #fff;
+            --cmpTextColor: #333;
+            --cmpLinkColor: #5f5f5f;
+            --cmpPurposesColor: #5f5f5f;
+            --cmpBrandColor: #f65002;
+            --cmpLogo: url('https://cmp.network-n.com/js/img/logo.svg');
+        }
+    </style>
+    <script>window.AdSlots = window.AdSlots || {cmd: [], disableScripts: ['gpt', 'bk']};</script>
+    <script async src="https://tags.bkrtx.com/js/bk-coretag.js"></script>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script async src="https://static.namemc.com/dist/namemc.min.js?v=ead7c656dfe3b42335654368775b5a16"></script>
+    <link rel="shortcut icon" sizes="16x16" href="https://crafatar.com/avatars/{{ uuid }}">
+    <link rel="shortcut icon" sizes="128x128" href="https://crafatar.com/avatars/{{ uuid }}">
+    <link rel="shortcut icon" sizes="192x192" href="https://crafatar.com/avatars/{{ uuid }}">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="canonical" href="https://namemc.com/">
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "NameMC",
+            "alternateName": "Minecraft Names & Skins",
+            "url": "https://namemc.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://namemc.com/search?q={search_term}",
+                "query-input": "required name=search_term"
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/custom.css">
+    <link rel="stylesheet" href="https://static.namemc.com/css/style.css?v=7fce98010eee7c2015effcf1f207aa9e">
+    <link rel="stylesheet" href="https://static.namemc.com/css/all.min.css">
+    <link rel="stylesheet" href="https://static.namemc.com/css/mc-style.css?v=00c0af37a878c778519f6bcefeaf59dc">
+    <style>
+        td {
+            padding: 4px !important;
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative">
+    <div id="nn_skinl" class="fixed"></div>
+    <div id="nn_skinr" class="fixed"></div>
+</div>
+<div id="nn_mobile_lb1"></div>
+<header class="mb-3">
+    <div class="container">
+        <nav class="navbar navbar-expand px-0">
+            <a class="navbar-brand text-dark d-none d-lg-block" href="/" title="Hypixel Skyblock Statistics"><img
+                    class="align-top" src="https://static.namemc.com/i/favicon-30.png" width="30" height="30"
+                    alt="HyStats"><span class="ml-2" translate="no">HyStats</span></a>
+            <ul class="navbar-nav mr-auto d-none d-lg-flex">
+                <li class="nav-item"><a class="nav-link" href="/top-players"><i
+                        class="fas fa-user menu-icon d-none d-xl-inline-block"></i>Top Skyblock Players</a></li>
+                <li class="nav-item"><a class="nav-link" href="/auction-house"><i
+                        class="fas fa-home menu-icon d-none d-xl-inline-block"></i>Auction house Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="/bazaar"><i
+                        class="far fa-coins menu-icon d-none d-xl-inline-block"></i>Bazaar Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="/discord"><i
+                        class="fab fa-discord menu-icon"></i>Discord</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link pl-0" href="/login"><i class="far fa-sign-in menu-icon"></i>Log In</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <form method="GET" action="/profile/">
+            <div class="input-group input-group-lg">
+                <input style="font-family: 'Consolas', monospace" id="search-box" class="form-control" type="search"
+                       name="username" placeholder="Enter a Mojang authenticated username" autocomplete="off"
+                       spellcheck="false">
+                <div class="input-group-append">
+                    <button class="btn" type="submit" title="Search"><i class="far fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <script>
+            if (!location.hash) {
+                var searchBoxElement = document.getElementById('search-box');
+                searchBoxElement.focus();
+                searchBoxElement.select();
+            }
+        </script>
+    </div>
+</header>
+<main class="container">
+    <h1 translate="no" style="color:{{ rankcolor }};font-family:Minecraft;font-weight: normal;font-style: normal;">{{
+        ranktag }} {{ username }}</h1>
+    <hr class="mt-1">
+    <div class="row">
+        <div class="col-lg-8 order-lg-2">
+            <div class="card mb-3">
+                <div class="card-header py-1"><strong>Hypixel Profile</strong></div>
+                <div class="card-body py-1">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col      order-md-1 col-md-4"><strong>NETWORK LEVEL</strong></div>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ level }}</samp></div>
+                    </div>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col      order-md-1 col-md-4"><strong class="d-inline d-md-none">UUID</strong></div>
+                        <div class="col-auto order-md-3 col-md-auto text-nowrap text-right"><a class="copy-button"
+                                                                                               href="javascript:void(0)"
+                                                                                               data-clipboard-text="ba88ef0e3486423082eba5ab26120a78"
+                                                                                               onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>ba88ef0e3486423082eba5ab26120a78</samp>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col      order-md-1 col-md-4"><strong>Link</strong></div>
+                        <div class="col-auto order-md-3 col-md-auto text-nowrap text-right"><a class="copy-button"
+                                                                                               href="javascript:void(0)"
+                                                                                               data-clipboard-text="mine.ly/BadWasabee.2"
+                                                                                               onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-2 col-md"><a href="https://mine.ly/BadWasabee.2">mine.ly/BadWasabee.2</a>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col col-md-4"><strong>Views</strong></div>
+                        <div class="col-auto">2 / month</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-container">
+                <div id="nn_mobile_mpu1" class="d-block d-lg-none child-align-center"></div>
+            </div>
+            <div class="ad-container">
+                <div id="nn_mpu1" class="d-none d-lg-block child-align-center"></div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-1"><strong>Name History</strong></div>
+                <div class="card-body py-1" style="overflow-y: auto; max-height: 10rem">
+                    <div class="row no-gutters">
+                        <div class="col-auto order-md-1          text-nowrap text-right pr-2"><strong>4</strong></div>
+                        <div class="col      order-md-2 col-md-4 text-nowrap"><a translate="no" href="/name/BadWasabee">BadWasabee</a>
+                        </div>
+                        <div class="col-auto order-md-4          text-nowrap text-right"><a class="copy-button"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-clipboard-text="BadWasabee"
+                                                                                            onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-3 col-md">
+                            <time datetime="2020-01-12T22:41:37.000Z">2020-01-12T22:41:37.000Z</time>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto order-md-1          text-nowrap text-right pr-2"><strong>3</strong></div>
+                        <div class="col      order-md-2 col-md-4 text-nowrap"><a translate="no" href="/name/SimonCKing">SimonCKing</a>
+                        </div>
+                        <div class="col-auto order-md-4          text-nowrap text-right"><a class="copy-button"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-clipboard-text="SimonCKing"
+                                                                                            onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-3 col-md">
+                            <time datetime="2016-11-26T00:10:47.000Z">2016-11-26T00:10:47.000Z</time>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto order-md-1          text-nowrap text-right pr-2"><strong>2</strong></div>
+                        <div class="col      order-md-2 col-md-4 text-nowrap"><a translate="no" href="/name/BadWasabee">BadWasabee</a>
+                        </div>
+                        <div class="col-auto order-md-4          text-nowrap text-right"><a class="copy-button"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-clipboard-text="BadWasabee"
+                                                                                            onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-3 col-md">
+                            <time datetime="2015-03-07T23:03:48.000Z">2015-03-07T23:03:48.000Z</time>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto order-md-1          text-nowrap text-right pr-2"><strong>1</strong></div>
+                        <div class="col      order-md-2 col-md-4 text-nowrap"><a translate="no" href="/name/sdegnan">sdegnan</a>
+                        </div>
+                        <div class="col-auto order-md-4          text-nowrap text-right"><a class="copy-button"
+                                                                                            href="javascript:void(0)"
+                                                                                            data-clipboard-text="sdegnan"
+                                                                                            onclick="return false">Copy</a>
+                        </div>
+                        <div class="col-12   order-md-3 col-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-1">
+                    <strong>
+                        Information </strong>
+                </div>
+                <div class="card-body py-1">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-auto col-md-4 pr-3"><strong>Accounts</strong></div>
+                        <div class="col text-right text-md-left">
+                            <a href="javascript:void(0)" title="Discord" data-toggle="popover" data-placement="top"
+                               data-content="Simond#2987"><img height="28"
+                                                               src="https://static.namemc.com/i/service/discord.svg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-height: 15rem">
+                <div class="card-header py-1">
+                    <strong>
+                        Profiles ({{ x }})
+                    </strong>
+                </div>
+                <div class="card-body player-list py-2">
+                    {% if x <= 1 %}
+                        <a translate="no" href="/profile/hohos.9">hohos</a>
+                    {% elif x <= 2 %}
+                        <a translate="no" href="/profile/hohos.9">hohos</a>
+                        <a translate="no" href="/profile/Kevinof300.2">Kevinof300</a>
+                    {% endif  %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-lg-1">
+            <div class="card mb-3">
+                <div class="card-body text-center p-0">
+                    <div class="position-relative checkered-light checkered-animation">
+
+                        <canvas class="skin-3d drop-shadow auto-size align-top"
+                                width="270"
+                                height="360"
+                                style="cursor:move;width:270px;height:360px;"
+                                data-skin-hash="29bf792a2c085438"
+                                data-model="slim"
+                                data-flip="false"
+                                data-animate="true"
+                                data-cape-hash=""></canvas>
+                        <button class="btn btn-secondary play-pause-btn position-absolute top-0 left-0 m-2 p-0"
+                                style="width:32px;height:32px;" onclick="toggleAnimation(this)">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <!--
+                        <button class="btn btn-outline-dark position-absolute top-0 right-0 m-2 p-0" href="/skin/29bf792a2c085438" style="width:32px;height:32px;">
+                          <canvas class="skin-2d align-top" width="24" height="24" data-skin-hash="29bf792a2c085438"></canvas>
+                        </button>
+                        -->
+                        <form id="add-friend-form" method="POST" action="/my-profile/friends">
+                            <input type="hidden" name="profile" value="ba88ef0e-3486-4230-82eb-a5ab26120a78">
+                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
+                            <button class="btn btn-success position-absolute bottom-0 right-0 m-2 p-0"
+                                    style="width:32px;height:32px;" type="submit" name="task" value="add-friend"
+                                    title="Add Friend"><i class="fas fa-user-plus"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-container">
+                <div id="nn_mobile_mpu2" class="d-block d-lg-none child-align-center"></div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-1">
+                    <strong>
+                        Skins (<a href="/minecraft-skins/profile/BadWasabee.2">3</a>)
+                    </strong>
+                </div>
+                <div class="card-body text-center" style="padding: 3px">
+                    <a href="/skin/29bf792a2c085438">
+                        <canvas class="skin-2d align-top skin-button skin-button-selected title-time" width="32"
+                                height="32" title="2020-08-18T19:20:28.289Z" data-skin-hash="29bf792a2c085438"
+                                data-model="slim"></canvas>
+                    </a><a href="/skin/2dca0eea21488ffb">
+                    <canvas class="skin-2d align-top skin-button title-time" width="32" height="32"
+                            title="2020-06-26T12:48:58.766Z" data-skin-hash="2dca0eea21488ffb"
+                            data-model="slim"></canvas>
+                </a><a href="/skin/26fe764aefa3291a">
+                    <canvas class="skin-2d align-top skin-button title-time" width="32" height="32"
+                            title="2020-03-28T02:08:56.984Z" data-skin-hash="26fe764aefa3291a"
+                            data-model="slim"></canvas>
+                </a></div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header py-1">Head Command</div>
+                <div class="card-body">
+                    <div class="input-group input-group-alt mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">1.13+</div>
+                        </div>
+                        <input style="font-family: Consolas, monospace;" class="form-control"
+                               value="/give @s minecraft:player_head{SkullOwner:&#34;BadWasabee&#34;}" readonly>
+                        <div class="input-group-append">
+                            <a class="btn btn-secondary copy-button" href="javascript:void(0)"
+                               data-clipboard-text="/give @s minecraft:player_head{SkullOwner:&#34;BadWasabee&#34;}">Copy</a>
+                        </div>
+                    </div>
+                    <div class="input-group input-group-alt">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">1.12&minus;</div>
+                        </div>
+                        <input style="font-family: Consolas, monospace;" class="form-control"
+                               value="/give @p minecraft:skull 1 3 {SkullOwner:&#34;BadWasabee&#34;}" readonly>
+                        <div class="input-group-append">
+                            <a class="btn btn-secondary copy-button" href="javascript:void(0)"
+                               data-clipboard-text="/give @p minecraft:skull 1 3 {SkullOwner:&#34;BadWasabee&#34;}">Copy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://static.namemc.com/js/three.min.js?v=d9f7c8e2c798bfbcd1f1ecd6a1ef6ef0"></script>
+<footer style="line-height: initial">
+    <div class="container text-center">
+        <hr class="m-0"/>
+        <div class="row py-2">
+            <div class="col-sm py-1"><small><a
+                    href="/cdn-cgi/l/email-protection#7d1e1213091c1e093d131c1018101e531e1210"><span class="__cf_email__"
+                                                                                                    data-cfemail="f695999882979582b698979b939b95d895999b">[email&#160;protected]</span></a></small>
+            </div>
+            <div class="col-sm py-1"><small><a href="/privacy">Privacy</a></small></div>
+            <div class="col-sm py-1"><small><a class="nn-cmp-show" href="#">Cookie Settings</a></small></div>
+            <div class="col-sm py-1"><small>Emoji by <a class="text-nowrap" href="https://twitter.github.io/twemoji/"
+                                                        target="_blank">Twem❤ji</a></small></div>
+            <div class="col-sm py-1"><small>Copyright © 2015–2020</small></div>
+        </div>
+    </div>
+</footer>
+<div id="celtra-reveal-wrapper" style="position:fixed; height: auto; width: 100%">
+    <div id="nn_1by1"></div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://static.namemc.com/assets/vendor/jquery/jquery.min.js"></script>
+<script src="https://static.namemc.com/assets/vendor/bootstrap/js/popper.min.js"></script>
+<script src="https://static.namemc.com/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://static.namemc.com/assets/vendor/stacked-menu/stacked-menu.min.js"></script>
+<script src="https://static.namemc.com/assets/javascript/theme.min.js"></script>
+<script src="https://static.namemc.com/js/clipboard.min.js?v=f06c52bfddb458ad87349acf9fac06c5"></script>
+<script src="https://static.namemc.com/js/script.js?v=74028a868a2a3ab7ea76b4357d33b893"></script>
+<script src="https://static.namemc.com/js/namemc-skins.js?v=4a6e6072fd745e0dfe4c855fea1c3709"></script>
+<script>
+    countdown(1602186092675);
+</script>
+<script>
+    $('.copy-button').tooltip({"placement": "top", "trigger": "manual", "boundary": "viewport", "title": "Copied"});
+    new ClipboardJS('.copy-button').on('success', function (e) {
+        var element = $(e.trigger);
+        element.tooltip('show');
+        clearTimeout(element.attr('data-timeout'));
+        element.attr('data-timeout', setTimeout(function () {
+            element.attr('data-timeout', null);
+            element.tooltip('hide');
+        }, 500));
+    });
+</script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h', {action: 'profile'}).then(function (token) {
+            $.ajax({
+                type: 'POST',
+                url: '/profile/ba88ef0e-3486-4230-82eb-a5ab26120a78',
+                data: {"g-recaptcha-response": token, "referer": "https://namemc.com/search?q=Badwasabee"}
+            })
+        });
+    });
+</script>
+<script>
+    function addFriendClick(event) {
+        event.preventDefault();
+        $('#add-friend-button').attr('disabled', 'disabled');
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h', {action: 'add_friend'}).then(function (token) {
+                $('#g-recaptcha-response').val(token);
+                $('#add-friend-button').unbind('click');
+                $('#add-friend-button').removeAttr('disabled');
+                $('#add-friend-button').click();
+                $('#add-friend-button').attr('disabled', 'disabled');
+            });
+        });
+    }
+
+    $('#add-friend-button').click(addFriendClick);
+</script>
+</body>
+</html>

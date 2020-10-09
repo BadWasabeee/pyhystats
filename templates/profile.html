@@ -97,8 +97,27 @@
     </div>
 </header>
 <main class="container">
-    <h1 translate="no" style="color:{{ rankcolor }};font-family:Minecraft;font-weight: normal;font-style: normal;">{{
-        ranktag }} {{ username }}</h1>
+    {% if network_rank == "YouTube": %}
+        <h1 translate="no"style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span></h1>
+    {% elif network_rank == "Admin": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
+    {% elif network_rank == "Mod": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#00AA00">[MOD] {{ username }}</span></h1>
+    {% elif network_rank == "Helper": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#5555FF">[HELPER] {{ username }}</span></h1>
+    {% elif network_rank == "MVP++": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FFAA00">[MVP</span><span style="color:#FF5555">++</span><span style="color:#FFAA00">] {{ username }}</span></h1>
+    {% elif network_rank == "MVP+": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FFFF">[MVP</span><span style="color:#FF5555">+</span><span style="color:#55FFFF">] {{ username }}</span></h1>
+    {% elif network_rank == "MVP": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FFFF">[MVP] {{ username }}</span></h1>
+    {% elif network_rank == "VIP+": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span></h1>
+    {% elif network_rank == "VIP": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FF55">[VIP] {{ username }}</span></h1>
+    {% elif network_rank == "Non": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#AAAAAA">{{ username }}</span></h1>
+    {% endif %}
     <hr class="mt-1">
     <div class="row">
         <div class="col-lg-8 order-lg-2">
@@ -129,12 +148,6 @@
                         <div class="col-auto">{{ views }} / month</div>
                     </div>
                 </div>
-            </div>
-            <div class="ad-container">
-                <div id="nn_mobile_mpu1" class="d-block d-lg-none child-align-center"></div>
-            </div>
-            <div class="ad-container">
-                <div id="nn_mpu1" class="d-none d-lg-block child-align-center"></div>
             </div>
             <div class="card mb-3">
                 <div class="card-header py-1"><strong>Name History</strong></div>

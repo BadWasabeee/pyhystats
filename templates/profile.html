@@ -88,7 +88,7 @@
     {% elif network_rank == "Admin": %}
     <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
             style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
-    {% elif network_rank == "Mod": %}
+    {% elif network_rank == "Moderator": %}
     <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
             style="color:#00AA00">[MOD] {{ username }}</span></h1>
     {% elif network_rank == "Helper": %}
@@ -212,11 +212,29 @@
                 </div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
-                        <div class="col-auto col-md-4 pr-3"><strong>Linked Accounts</strong></div>
+                        {% if network_linked_socialmedia_number > 0 %}
+                        <div class="col-auto col-md-4 pr-3"><strong>Linked Accounts ({{ network_linked_socialmedia_number }})</strong></div>
+                        {% endif %}
                         <div class="col text-right text-md-left">
-                            <a href="javascript:void(0)" title="Discord" data-toggle="popover" data-placement="top"
-                               data-content="Simond#2987"><img height="28"
-                                                               src="https://static.namemc.com/i/service/discord.svg"></a>
+                            {% if not DISCORD|string() == "None" %}
+                                <a href="javascript:void(0)" title="Discord" data-toggle="popover" data-placement="top"
+                                data-content="{{ DISCORD }}"><img height="33" src="https://static.namemc.com/i/service/discord.svg"></a>
+                            {% endif %}
+                            {% if not INSTAGRAM|string() == "None" %}
+                                <a href="{{ INSTAGRAM }}" target="_blank" rel="nofollow" title="Instagram"><img height="28" src="https://static.namemc.com/i/service/instagram.svg"></a>
+                            {% endif %}
+                            {% if not TWITCH|string() == "None" %}
+                                <a href="{{ TWITCH }}" target="_blank" rel="nofollow" title="Twitch"><img height="28" src="https://static.namemc.com/i/service/twitch.svg"></a>
+                            {% endif %}
+                            {% if not YOUTUBE|string() == "None" %}
+                                <a href="{{ YOUTUBE }}" target="_blank" rel="nofollow" title="YouTube"><img height="28" src="https://static.namemc.com/i/service/youtube.svg"></a>
+                            {% endif %}
+                            {% if not TWITTER|string() == "None" %}
+                                <a href="{{ TWITTER }}" target="_blank" rel="nofollow" title="Twitter"><img height="28" src="https://static.namemc.com/i/service/twitter.svg"></a>
+                            {% endif %}
+                            {% if not HYPIXEL|string() == "None" %}
+                                <a href="{{ HYPIXEL }}" target="_blank" rel="nofollow" title="Hypixel"><img style="border-radius:7px" height="28" width="28" src="/static/img/hypixel.jpg"></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -235,21 +253,9 @@
         <div class="col-lg-4 order-lg-1">
             <div class="card mb-3">
                 <div class="card-body text-center p-0">
-                    <div class="position-relative checkered-light checkered-animation">
-
-                        <canvas class="skin-3d drop-shadow auto-size align-top"
-                                width="270"
-                                height="360"
-                                style="cursor:move;width:270px;height:360px;"
-                                data-skin-hash="29bf792a2c085438"
-                                data-model="slim"
-                                data-flip="false"
-                                data-animate="true"
-                                data-cape-hash=""></canvas>
-                        <button class="btn btn-secondary play-pause-btn position-absolute top-0 left-0 m-2 p-0"
-                                style="width:32px;height:32px;" onclick="toggleAnimation(this)">
-                            <i class="fas fa-pause"></i>
-                        </button>
+                    <div class="position-relative checkered-light" style="padding: 10px">
+                        <img class="skin-3d drop-shadow auto-size align-top" height="270"
+                             src="https://crafatar.com/renders/body/{{ uuid }}">
                         </form>
                     </div>
                 </div>

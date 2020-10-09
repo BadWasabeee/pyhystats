@@ -106,32 +106,27 @@
                 <div class="card-header py-1"><strong>Hypixel Profile</strong></div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
-                        <div class="col      order-md-1 col-md-4"><strong>NETWORK LEVEL</strong></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ level }}</samp></div>
+                        <div class="col      order-md-1 col-md-4"><strong>Network Level</strong></div>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ network_level }}</samp></div>
                     </div>
                     <div class="row no-gutters align-items-center">
-                        <div class="col      order-md-1 col-md-4"><strong class="d-inline d-md-none">UUID</strong></div>
-                        <div class="col-auto order-md-3 col-md-auto text-nowrap text-right"><a class="copy-button"
-                                                                                               href="javascript:void(0)"
-                                                                                               data-clipboard-text="ba88ef0e3486423082eba5ab26120a78"
-                                                                                               onclick="return false">Copy</a>
-                        </div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>ba88ef0e3486423082eba5ab26120a78</samp>
+                        <div class="col      order-md-1 col-md-4"><strong>Network Experience</strong></div>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ network_exp }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters">
                         <div class="col      order-md-1 col-md-4"><strong>Link</strong></div>
                         <div class="col-auto order-md-3 col-md-auto text-nowrap text-right"><a class="copy-button"
                                                                                                href="javascript:void(0)"
-                                                                                               data-clipboard-text="mine.ly/BadWasabee.2"
+                                                                                               data-clipboard-text="127.0.0.1/profile/{{ username }}"
                                                                                                onclick="return false">Copy</a>
                         </div>
-                        <div class="col-12   order-md-2 col-md"><a href="https://mine.ly/BadWasabee.2">mine.ly/BadWasabee.2</a>
+                        <div class="col-12   order-md-2 col-md"><a href="https://mine.ly/BadWasabee.2">hystats.com/profile/{{ username }}</a>
                         </div>
                     </div>
                     <div class="row no-gutters">
                         <div class="col col-md-4"><strong>Views</strong></div>
-                        <div class="col-auto">2 / month</div>
+                        <div class="col-auto">{{ views }} / month</div>
                     </div>
                 </div>
             </div>
@@ -204,7 +199,7 @@
                 </div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
-                        <div class="col-auto col-md-4 pr-3"><strong>Accounts</strong></div>
+                        <div class="col-auto col-md-4 pr-3"><strong>Linked Accounts</strong></div>
                         <div class="col text-right text-md-left">
                             <a href="javascript:void(0)" title="Discord" data-toggle="popover" data-placement="top"
                                data-content="Simond#2987"><img height="28"
@@ -216,16 +211,11 @@
             <div class="card mb-3" style="max-height: 15rem">
                 <div class="card-header py-1">
                     <strong>
-                        Profiles ({{ x }})
+                        Profiles ({x})
                     </strong>
                 </div>
                 <div class="card-body player-list py-2">
-                    {% if x <= 1 %}
-                        <a translate="no" href="/profile/hohos.9">hohos</a>
-                    {% elif x <= 2 %}
-                        <a translate="no" href="/profile/hohos.9">hohos</a>
-                        <a translate="no" href="/profile/Kevinof300.2">Kevinof300</a>
-                    {% endif  %}
+
                 </div>
             </div>
         </div>

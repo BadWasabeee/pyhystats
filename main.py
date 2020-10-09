@@ -3,7 +3,7 @@ import os
 import hypixel
 from mojang import MojangAPI
 from hypixelapi import hypixelapi
-
+import hypixel
 
 app = Flask(__name__)
 
@@ -44,44 +44,53 @@ def profile():
     uuid = MojangAPI.get_uuid(raw_username)
     player = api.get_player(uuid)
     name = MojangAPI.get_profile(uuid).name
-    rank = player.get_rank()
-    level = player.get_level()
-    number_of_profiles = player.get_stats(hypixelapi.GameType.SKYBLOCK)['profiles'][uuid]['cute_name']
-    x = 0
-    for number_of_profiles in player.get_stats(hypixelapi.GameType.SKYBLOCK)['profiles']:
-        print(number_of_profiles)
-        x = x + 1
+    network_rank = hypixel.Player(raw_username).getRank()['rank']
+    network_level = player.get_level()
+    network_exp = str(player.get_exp())
+    stats = player.get_stats(hypixelapi.GameType.SKYBLOCK)
+    for profiles in stats:
+        print(stats['profiles'])
+    # number_of_profiles = player.get_stats(hypixelapi.GameType.SKYBLOCK)['profiles'][uuid]['cute_name']
+    # profiles = player.get_stats(hypixelapi.GameType.SKYBLOCK)['profiles']['profile_id']
+    # print(profiles)
+    # for i in profilxes:
+    #     print(profiles['cute_name'])
     if not uuid:
         session['logged_in'] = False
     else:
-        if str(rank).lower() == 'youtube':
+        if str(network_rank).lower() == 'youtube':
             rank_color = '#FF5555'
-        elif str(rank).lower() == "admin":
+        elif str(network_rank).lower() == "admin":
             rank_color = '#FF5555'
-        elif str(rank).lower() == "mod":
+        elif str(network_rank).lower() == "mod":
             rank_color = '#00AA00'
-        elif str(rank).lower() == "helper":
+        elif str(network_rank).lower() == "helper":
             rank_color = '#5555FF'
-        elif str(rank).lower() == "Superstar":
+        elif str(network_rank).lower() == "Superstar":
             rank_color = '#FFAA00'
-        elif str(rank).lower() == "mvp_plus":
+        elif str(network_rank).lower() == "mvp_plus":
             rank_color = '#55FFFF'
-        elif str(rank).lower() == "mvp":
+        elif str(network_rank).lower() == "mvp":
             rank_color = '#55FFFF'
-        elif str(rank).lower() == "vip_plus":
+        elif str(network_rank).lower() == "vip_plus":
             rank_color = '#55FF55'
-        elif str(rank).lower() == "vip":
+        elif str(network_rank).lower() == "vip":
             rank_color = '#55FF55'
-        elif str(rank).lower() == "none":
+        elif str(network_rank).lower() == "none":
             rank_color = '#AAAAAA'
 
-        if not str(rank).lower() == 'none':
-            rank_tag = str('[' + str(rank) + ']').upper()
+        if not str(network_rank).lower() == 'none':
+            rank_tag = str('[' + str(network_rank) + ']').upper()
         else:
             rank_tag = ''
 
-        return render_template('profile.html', username=name, rank=rank, ranktag=rank_tag, uuid=uuid, level=level,
-                               rankcolor=rank_color, x=x)
+        print(network_exp)
+
+        views = str(0)
+
+        return render_template('profile.html', username=name, network_rank=network_rank, ranktag=rank_tag, uuid=uuid,
+                               network_level=network_level,
+                               rankcolor=rank_color)
     return home()
 
 

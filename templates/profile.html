@@ -19,22 +19,6 @@
     <link rel="shortcut icon" sizes="16x16" href="https://crafatar.com/avatars/{{ uuid }}">
     <link rel="shortcut icon" sizes="128x128" href="https://crafatar.com/avatars/{{ uuid }}">
     <link rel="shortcut icon" sizes="192x192" href="https://crafatar.com/avatars/{{ uuid }}">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="canonical" href="https://namemc.com/">
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "name": "NameMC",
-            "alternateName": "Minecraft Names & Skins",
-            "url": "https://namemc.com/",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://namemc.com/search?q={search_term}",
-                "query-input": "required name=search_term"
-            }
-        }
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/theme.min.css" data-skin="default">
     <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/custom.css">
@@ -43,7 +27,7 @@
     <link rel="stylesheet" href="https://static.namemc.com/css/mc-style.css?v=00c0af37a878c778519f6bcefeaf59dc">
     <style>
         td {
-            padding: 4px !important;
+            padding: 4px;
         }
     </style>
 </head>
@@ -98,25 +82,39 @@
 </header>
 <main class="container">
     {% if network_rank == "YouTube": %}
-        <h1 translate="no"style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span>
+    </h1>
     {% elif network_rank == "Admin": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
     {% elif network_rank == "Mod": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#00AA00">[MOD] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#00AA00">[MOD] {{ username }}</span></h1>
     {% elif network_rank == "Helper": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#5555FF">[HELPER] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#5555FF">[HELPER] {{ username }}</span></h1>
     {% elif network_rank == "MVP++": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#FFAA00">[MVP</span><span style="color:#FF5555">++</span><span style="color:#FFAA00">] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#FFAA00">[MVP</span><span style="color:#FF5555">++</span><span style="color:#FFAA00">] {{ username }}</span>
+    </h1>
     {% elif network_rank == "MVP+": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FFFF">[MVP</span><span style="color:#FF5555">+</span><span style="color:#55FFFF">] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#55FFFF">[MVP</span><span style="color:#FF5555">+</span><span style="color:#55FFFF">] {{ username }}</span>
+    </h1>
     {% elif network_rank == "MVP": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FFFF">[MVP] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#55FFFF">[MVP] {{ username }}</span></h1>
     {% elif network_rank == "VIP+": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span>
+    </h1>
     {% elif network_rank == "VIP": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#55FF55">[VIP] {{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#55FF55">[VIP] {{ username }}</span></h1>
     {% elif network_rank == "Non": %}
-        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span style="color:#AAAAAA">{{ username }}</span></h1>
+    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+            style="color:#AAAAAA">{{ username }}</span></h1>
     {% endif %}
     <hr class="mt-1">
     <div class="row">
@@ -126,7 +124,8 @@
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><strong>Network Level</strong></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ network_level }}</samp></div>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ network_level }}</samp>
+                        </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><strong>Network Experience</strong></div>
@@ -140,7 +139,8 @@
                                                                                                data-clipboard-text="127.0.0.1/profile/{{ username }}"
                                                                                                onclick="return false">Copy</a>
                         </div>
-                        <div class="col-12   order-md-2 col-md"><a href="https://mine.ly/BadWasabee.2">hystats.com/profile/{{ username }}</a>
+                        <div class="col-12   order-md-2 col-md"><a href="https://mine.ly/BadWasabee.2">hystats.com/profile/{{
+                            username }}</a>
                         </div>
                     </div>
                     <div class="row no-gutters">
@@ -250,17 +250,6 @@
                                 style="width:32px;height:32px;" onclick="toggleAnimation(this)">
                             <i class="fas fa-pause"></i>
                         </button>
-                        <!--
-                        <button class="btn btn-outline-dark position-absolute top-0 right-0 m-2 p-0" href="/skin/29bf792a2c085438" style="width:32px;height:32px;">
-                          <canvas class="skin-2d align-top" width="24" height="24" data-skin-hash="29bf792a2c085438"></canvas>
-                        </button>
-                        -->
-                        <form id="add-friend-form" method="POST" action="/my-profile/friends">
-                            <input type="hidden" name="profile" value="ba88ef0e-3486-4230-82eb-a5ab26120a78">
-                            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
-                            <button class="btn btn-success position-absolute bottom-0 right-0 m-2 p-0"
-                                    style="width:32px;height:32px;" type="submit" name="task" value="add-friend"
-                                    title="Add Friend"><i class="fas fa-user-plus"></i></button>
                         </form>
                     </div>
                 </div>
@@ -349,9 +338,6 @@
 <script src="https://static.namemc.com/js/script.js?v=74028a868a2a3ab7ea76b4357d33b893"></script>
 <script src="https://static.namemc.com/js/namemc-skins.js?v=4a6e6072fd745e0dfe4c855fea1c3709"></script>
 <script>
-    countdown(1602186092675);
-</script>
-<script>
     $('.copy-button').tooltip({"placement": "top", "trigger": "manual", "boundary": "viewport", "title": "Copied"});
     new ClipboardJS('.copy-button').on('success', function (e) {
         var element = $(e.trigger);
@@ -362,35 +348,6 @@
             element.tooltip('hide');
         }, 500));
     });
-</script>
-<script src="https://www.google.com/recaptcha/api.js?render=6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h"></script>
-<script>
-    grecaptcha.ready(function () {
-        grecaptcha.execute('6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h', {action: 'profile'}).then(function (token) {
-            $.ajax({
-                type: 'POST',
-                url: '/profile/ba88ef0e-3486-4230-82eb-a5ab26120a78',
-                data: {"g-recaptcha-response": token, "referer": "https://namemc.com/search?q=Badwasabee"}
-            })
-        });
-    });
-</script>
-<script>
-    function addFriendClick(event) {
-        event.preventDefault();
-        $('#add-friend-button').attr('disabled', 'disabled');
-        grecaptcha.ready(function () {
-            grecaptcha.execute('6LdUt-8UAAAAAFTYFO1VjCdU5f8KW5oZoCocWU3h', {action: 'add_friend'}).then(function (token) {
-                $('#g-recaptcha-response').val(token);
-                $('#add-friend-button').unbind('click');
-                $('#add-friend-button').removeAttr('disabled');
-                $('#add-friend-button').click();
-                $('#add-friend-button').attr('disabled', 'disabled');
-            });
-        });
-    }
-
-    $('#add-friend-button').click(addFriendClick);
 </script>
 </body>
 </html>

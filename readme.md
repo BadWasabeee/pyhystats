@@ -1,4 +1,4 @@
-<h1> PyHystats </h1>
+<h1> <strong>PyHystats</strong> </h1>
 <h3> Credit </h3>
 <p> I am currently using html and style sheets from https://namemc.com </p>
 <h2> Information </h2>

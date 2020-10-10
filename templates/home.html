@@ -19,24 +19,8 @@
     <link rel="shortcut icon" sizes="16x16" href="https://static.namemc.com/i/favicon-16.png">
     <link rel="shortcut icon" sizes="128x128" href="https://static.namemc.com/i/favicon-128.png">
     <link rel="shortcut icon" sizes="192x192" href="https://static.namemc.com/i/favicon-192.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="canonical" href="https://namemc.com/">
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "name": "NameMC",
-            "alternateName": "Minecraft Names & Skins",
-            "url": "https://namemc.com/",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://namemc.com/search?q={search_term}",
-                "query-input": "required name=search_term"
-            }
-        }
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/theme-dark.min.css" data-skin="default">
     <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/custom.css">
     <link rel="stylesheet" href="https://static.namemc.com/css/style.css?v=7fce98010eee7c2015effcf1f207aa9e">
     <link rel="stylesheet" href="https://static.namemc.com/css/all.min.css">
@@ -100,6 +84,15 @@
 <main class="container">
     <div class="row">
         <div class="col-xl-8">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages%}
+                        <div class="text-center" style="color: #D8000C;background-color: #FFD2D2;margin:10px 22px;font-weight: normal;vertical-align:middle;border-radius: 5px;border: 1px solid #D8000C;padding: 5px;font-size: medium">
+                            <h6>Error:</h6>{{ message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <h2 class="text-center"><a href="/top-players">Top Hypixel Players</a></h2>
             <div class="row no-gutters skin-list justify-content-center">
                 <div class="col-4 col-md ">
@@ -545,7 +538,7 @@
         <div class="col-xl-4">
             <h2 class="d-none d-lg-block">&nbsp;</h2>
             <div class="card mb-3">
-                <a class="twitter-timeline" data-height="910" data-theme="light" href="https://twitter.com/hypixelnetwork"
+                <a class="twitter-timeline" data-height="910" data-theme="dark" href="https://twitter.com/hypixelnetwork"
                    data-chrome="transparent nofooter noscrollbar">Tweets by namemc_com</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 <script>

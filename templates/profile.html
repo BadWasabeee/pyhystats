@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>{{ username }}'s | HyStats</title>
     <style>
@@ -84,11 +84,6 @@
         {% if username|string() == "Technoblade" %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
                 style="color:#FF55FF">[PIG</span><span style="color:#55FFFF">+++</span><span style="color:#FF55FF">] {{ username }}</span></h1>
-        {% elif username|string() == "BadWasabee" %}
-        <h1 translate="no" style=" background: linear-gradient(to right, red, orange, green, cyan, blue, violet);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                font-family:Minecraft;font-weight: normal;font-style: normal;">[JERRY] {{ username }}</h1>
         {% elif network_rank == "YouTube": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
                 style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span></h1>
@@ -121,10 +116,9 @@
                 style="color:#AAAAAA">{{ username }}</span></h1>
         {% endif %}
         {% if is_online|string() == "True" %}
-            <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark> Playing: <strong>{{ is_online_gameType }}</strong> at
-                {{ is_online_mode }}</h4>
+            <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark>   <span style="font-weight: lighter">Currently Playing:</span><strong> {{ is_online_gameType }}</strong><span style="font-weight: lighter"> at </span><strong>{{ is_online_mode }}</strong></h4>
         {% else: %}
-            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark></strong></h4>
+            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark>   <span style="font-weight: lighter">Last Seen:</span><strong> {{ last_logout_from_now_formatted }}</strong></h4>
         {% endif %}
 
 
@@ -132,7 +126,7 @@
     <div class="row">
         <div class="col-lg-8 order-lg-2">
             <div class="card mb-3">
-                <div class="card-header py-1">Showing Statistics for <strong>{{ last_played_profile_name }}</strong></div>
+                <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for</span> <strong>{{ last_played_profile_name }}</strong></h6></div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/health.png" height="20" width="20"> <span style="color:#EF524F"><strong>Health</strong></span></div>

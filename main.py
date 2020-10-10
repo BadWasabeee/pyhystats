@@ -66,6 +66,7 @@ def profile():
             '''
             is_online = player.get_status()['online']
             if str(is_online) == "True":
+                last_logout_from_now_formatted = 'Online'
                 is_online_gameType = player.get_status()['gameType']
                 is_online_mode = player.get_status()['mode']
                 if is_online_gameType == "SKYBLOCK":
@@ -95,11 +96,25 @@ def profile():
                     else:
                         is_online_mode = is_online_mode
                 else:
-                    is_online_gameType = "is_online_gameType"
-                    is_online_mode = "is_online_mode"
+                    is_online_gameType = is_online_gameType
+                    is_online_mode = is_online_mode
+            elif str(requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
+                         'last_logout']).lower() == "none":
+                player_api_settings = "disabled"
+                last_logout_from_now_formatted = "disabled"
+                is_online_gameType = "disabled"
+                is_online_mode = "disabled"
             else:
-                is_online_gameType = "is_online_gameType"
-                is_online_mode = "is_online_mode"
+                last_logout = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
+                    'last_logout']
+                last_logout = datetime.datetime.fromtimestamp(requests.get('https://api.slothpixel.me/api/players/' +
+                                                                           raw_username).json()[
+                                                                  'last_logout'] // 1000.0)
+                last_logout_from_now = datetime.datetime.now() - last_logout
+                last_logout_from_now_for = divmod(last_logout_from_now.total_seconds(), 60)
+                last_logout_from_now_formatted = (str(int(round(last_logout_from_now_for[0], 1))) + " minutes " +
+                                                  str(int(round(last_logout_from_now_for[1], 0))) + " seconds ago")
+
             '''
             Just identifying variables for html color
             '''
@@ -160,39 +175,45 @@ def profile():
             '''
             Setting up for choosing different profiles.
             '''
-            profiles = player.get_stats()['SkyBlock']['profiles']
-            x = 0
-            profile_id = []
-            cute_name = []
+            if 'SkyBlock' in str(player.get_stats()):
 
-            for profile in profiles:
-                x = x + 1
-                profile_id.append(str(profile))
-                cute_name.append(str(profiles[profile]['cute_name']))
-            print(profile_id[1], cute_name[1])
+                profiles = player.get_stats()['SkyBlock']['profiles']
+                x = 0
+                profile_id = []
+                cute_name = []
+                for profile in profiles:
+                    x = x + 1
+                    profile_id.append(str(profile))
+                    cute_name.append(str(profiles[profile]['cute_name']))
+                # print(profile_id[1], cute_name[1])
+                '''
+                Grabbing variables
+                '''
+                last_played_profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()
+                last_played_profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()[
+                    'id']
+                last_played_profile_name = profiles[last_played_profile_id]['cute_name']
+                last_played_profile_stats = last_played_profile['members'][uuid]['attributes']
+                last_played_profile_stats_health = last_played_profile_stats['health']
+                last_played_profile_stats_defense = last_played_profile_stats['defense']
+                last_played_profile_stats_strength = last_played_profile_stats['strength']
+                last_played_profile_stats_speed = last_played_profile_stats['speed']
+                last_played_profile_stats_crit_chance = last_played_profile_stats['crit_chance']
+                last_played_profile_stats_crit_damage = last_played_profile_stats['crit_damage']
+                last_played_profile_stats_bonus_attack_speed = last_played_profile_stats['bonus_attack_speed']
+                last_played_profile_stats_intelligence = last_played_profile_stats['intelligence']
+                last_played_profile_stats_sea_creature_chance = last_played_profile_stats['sea_creature_chance']
+                last_played_profile_stats_magic_find = last_played_profile_stats['magic_find']
+                last_played_profile_stats_pet_luck = last_played_profile_stats['pet_luck']
 
-            '''
-            Grabbing variables
-            '''
-            last_played_profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()
-            last_played_profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()['id']
-            last_played_profile_name = profiles[last_played_profile_id]['cute_name']
-            last_played_profile_stats = last_played_profile['members'][uuid]['attributes']
-            last_played_profile_stats_health = last_played_profile_stats['health']
-            last_played_profile_stats_defense = last_played_profile_stats['defense']
-            last_played_profile_stats_strength = last_played_profile_stats['strength']
-            last_played_profile_stats_speed = last_played_profile_stats['speed']
-            last_played_profile_stats_crit_chance = last_played_profile_stats['crit_chance']
-            last_played_profile_stats_crit_damage = last_played_profile_stats['crit_damage']
-            last_played_profile_stats_bonus_attack_speed = last_played_profile_stats['bonus_attack_speed']
-            last_played_profile_stats_intelligence = last_played_profile_stats['intelligence']
-            last_played_profile_stats_sea_creature_chance = last_played_profile_stats['sea_creature_chance']
-            last_played_profile_stats_magic_find = last_played_profile_stats['magic_find']
-            last_played_profile_stats_pet_luck = last_played_profile_stats['pet_luck']
+                '''
+                Rendering html template
+                '''
+                print(player.get_stats()['SkyBlock'])
+            else:
+                flash("Player has no SkyBlock profiles.")
+                return home()
 
-            '''
-            Rendering html template
-            '''
             return render_template('profile.html', username=name, network_rank=network_rank, uuid=uuid,
                                    network_level=network_level, network_exp=network_exp,
                                    network_linked_socialmedia_number=network_linked_socialmedia_number,
@@ -210,19 +231,22 @@ def profile():
                                    last_played_profile_stats_sea_creature_chance=last_played_profile_stats_sea_creature_chance,
                                    last_played_profile_stats_magic_find=last_played_profile_stats_magic_find,
                                    last_played_profile_stats_pet_luck=last_played_profile_stats_pet_luck,
-                                   last_played_profile_stats_defense=last_played_profile_stats_defense)
+                                   last_played_profile_stats_defense=last_played_profile_stats_defense,
+                                   last_logout_from_now_formatted=last_logout_from_now_formatted)
 
         except hypixel.PlayerNotFoundException:
             '''
             Catching if a player has not joined the server.
             Returning them to the home page if so...
             '''
+            flash("The user has not played Hypixel.")
             return home()
     else:
         '''
         Catching if a player name is not authentic.
         Using MojangAPI to see if the uuid exists
         '''
+        flash("No user with the name '" + raw_username + "' was found.")
         return home()
 
 

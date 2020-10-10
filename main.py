@@ -33,12 +33,18 @@ def profile():
     uuid = MojangAPI.get_uuid(raw_username)
     if uuid:
         try:
+            '''
+            All essential variables to make the other code run properly
+            '''
             api = hypixelapi.HypixelAPI('e6a09aab-befc-4f53-b668-7fd3fe2a585d')
             player = api.get_player(uuid)
             name = MojangAPI.get_profile(uuid).name
             network_rank = hypixel.Player(raw_username).getRank()['rank']
             network_level = player.get_level()
             network_exp = int(player.get_exp())
+            '''
+            Social media of player.
+            '''
             links = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()['links']
 
             network_linked_socialmedia_number = 0
@@ -54,6 +60,10 @@ def profile():
             DISCORD = links['DISCORD']
             HYPIXEL = links['HYPIXEL']
 
+            '''
+            Beautifying the players location and more... Adding more soon.
+            Have to run this 'if' statement to not get errors.
+            '''
             is_online = player.get_status()['online']
             if str(is_online) == "True":
                 is_online_gameType = player.get_status()['gameType']
@@ -90,10 +100,9 @@ def profile():
             else:
                 is_online_gameType = "is_online_gameType"
                 is_online_mode = "is_online_mode"
-
-            skyblock_number_of_profiles = hypixel.Player(raw_username).getPlayerInfo()
-            print(skyblock_number_of_profiles)
-
+            '''
+            Just identifying variables for html color
+            '''
             black = '#000000'
             dark_blue = '#0000AA'
             dark_green = '#00AA00'
@@ -111,6 +120,9 @@ def profile():
             yellow = '#FFFF55'
             white = '#FFFFFF'
 
+            '''
+            Making sure for people who have MVP+ & higher get their correct plus color casted to them.
+            '''
             rpc = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()['rank_plus_color']
             if str(rpc) == "&0":
                 rank_plus_color = black
@@ -145,17 +157,72 @@ def profile():
             elif str(rpc) == "&f":
                 rank_plus_color = white
 
+            '''
+            Setting up for choosing different profiles.
+            '''
+            profiles = player.get_stats()['SkyBlock']['profiles']
+            x = 0
+            profile_id = []
+            cute_name = []
+
+            for profile in profiles:
+                x = x + 1
+                profile_id.append(str(profile))
+                cute_name.append(str(profiles[profile]['cute_name']))
+            print(profile_id[1], cute_name[1])
+
+            '''
+            Grabbing variables
+            '''
+            last_played_profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()
+            last_played_profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()['id']
+            last_played_profile_name = profiles[last_played_profile_id]['cute_name']
+            last_played_profile_stats = last_played_profile['members'][uuid]['attributes']
+            last_played_profile_stats_health = last_played_profile_stats['health']
+            last_played_profile_stats_defense = last_played_profile_stats['defense']
+            last_played_profile_stats_strength = last_played_profile_stats['strength']
+            last_played_profile_stats_speed = last_played_profile_stats['speed']
+            last_played_profile_stats_crit_chance = last_played_profile_stats['crit_chance']
+            last_played_profile_stats_crit_damage = last_played_profile_stats['crit_damage']
+            last_played_profile_stats_bonus_attack_speed = last_played_profile_stats['bonus_attack_speed']
+            last_played_profile_stats_intelligence = last_played_profile_stats['intelligence']
+            last_played_profile_stats_sea_creature_chance = last_played_profile_stats['sea_creature_chance']
+            last_played_profile_stats_magic_find = last_played_profile_stats['magic_find']
+            last_played_profile_stats_pet_luck = last_played_profile_stats['pet_luck']
+
+            '''
+            Rendering html template
+            '''
             return render_template('profile.html', username=name, network_rank=network_rank, uuid=uuid,
                                    network_level=network_level, network_exp=network_exp,
                                    network_linked_socialmedia_number=network_linked_socialmedia_number,
                                    TWITTER=TWITTER, TWITCH=TWITCH, YOUTUBE=YOUTUBE, INSTAGRAM=INSTAGRAM,
                                    DISCORD=DISCORD, HYPIXEL=HYPIXEL, is_online=is_online,
                                    rank_plus_color=rank_plus_color, is_online_gameType=is_online_gameType,
-                                   is_online_mode=is_online_mode)
+                                   is_online_mode=is_online_mode, last_played_profile_name=last_played_profile_name,
+                                   last_played_profile_stats_health=last_played_profile_stats_health,
+                                   last_played_profile_stats_strength=last_played_profile_stats_strength,
+                                   last_played_profile_stats_speed=last_played_profile_stats_speed,
+                                   last_played_profile_stats_crit_chance=last_played_profile_stats_crit_chance,
+                                   last_played_profile_stats_crit_damage=last_played_profile_stats_crit_damage,
+                                   last_played_profile_stats_bonus_attack_speed=last_played_profile_stats_bonus_attack_speed,
+                                   last_played_profile_stats_intelligence=last_played_profile_stats_intelligence,
+                                   last_played_profile_stats_sea_creature_chance=last_played_profile_stats_sea_creature_chance,
+                                   last_played_profile_stats_magic_find=last_played_profile_stats_magic_find,
+                                   last_played_profile_stats_pet_luck=last_played_profile_stats_pet_luck,
+                                   last_played_profile_stats_defense=last_played_profile_stats_defense)
 
         except hypixel.PlayerNotFoundException:
+            '''
+            Catching if a player has not joined the server.
+            Returning them to the home page if so...
+            '''
             return home()
     else:
+        '''
+        Catching if a player name is not authentic.
+        Using MojangAPI to see if the uuid exists
+        '''
         return home()
 
 

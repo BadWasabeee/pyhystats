@@ -116,9 +116,9 @@
                 style="color:#AAAAAA">{{ username }}</span></h1>
         {% endif %}
         {% if is_online|string() == "True" %}
-            <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark>   <span style="font-weight: lighter">Currently Playing:</span><strong> {{ is_online_gameType }}</strong><span style="font-weight: lighter"> at </span><strong>{{ is_online_mode }}</strong></h4>
+            <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark> <span style="font-weight: lighter">for</span> <strong> {{ last_login_from_now }}</strong>  <span style="font-weight: lighter">Currently Playing:</span><strong> {{ is_online_gameType }}</strong><span style="font-weight: lighter"> at </span><strong>{{ is_online_mode }}</strong></h4>
         {% else: %}
-            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark>   <span style="font-weight: lighter">Last Seen:</span><strong> {{ last_logout_from_now_formatted }}</strong></h4>
+            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark>   <span style="font-weight: lighter">Last Seen:</span><strong> {{ last_logout_from_now }}</strong></h4>
         {% endif %}
 
 

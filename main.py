@@ -66,7 +66,38 @@ def profile():
             '''
             is_online = player.get_status()['online']
             if str(is_online) == "True":
-                last_logout_from_now_formatted = 'Online'
+                '''
+                Addresses certain variables form offline players and casts
+                it to something else to prevent errors. This also gets a player's
+                time online, location (game mode), and other stats.
+                '''
+
+                last_login_long = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
+                    'last_login']
+                last_login = datetime.datetime.fromtimestamp(last_login_long // 1000.0)
+                last_login_from_now = datetime.datetime.now() - last_login
+
+                last_login_from_now_days = divmod(last_login_from_now.total_seconds(), 86400)
+                last_login_from_now_hours = divmod(last_login_from_now_days[1], 3600)
+                last_login_from_now_mins = divmod(last_login_from_now_hours[1], 60)
+                last_login_from_now_secs = divmod(last_login_from_now_mins[1], 1)
+
+                if last_login_from_now_days[0] < 1:
+                    last_login_from_now = (str(int(round(last_login_from_now_hours[0], 0))) + " hours " + str(int(round(
+                        last_login_from_now_mins[0], 0))) + " minutes " + str(int(round(last_login_from_now_secs[0], 0)))
+                                           + " seconds ")
+                elif last_login_from_now_hours[0] < 1 and last_login_from_now_days[0] < 1:
+                    last_login_from_now = (str(int(round(last_login_from_now_mins[0], 0))) + " minutes " + str(int(round(
+                        last_login_from_now_secs[0], 0))) + " seconds ")
+                elif last_login_from_now_mins[0] < 1 and last_login_from_now_days[0] < 1 and last_login_from_now_hours[0] < 1:
+                    last_login_from_now = (str(int(round(last_login_from_now_secs[0], 0))) + " seconds ")
+                else:
+                    last_login_from_now = (str(int(round(last_login_from_now_days[0], 0))) + " days " + str(int(round(
+                        last_login_from_now_hours[0], 0))) + " hours " + str(
+                        int(round(last_login_from_now_mins[0], 0))) +
+                                           " minutes " + str(int(round(last_login_from_now_secs[0], 0))) + " seconds ")
+
+                last_logout_from_now = 'Online'
                 is_online_gameType = player.get_status()['gameType']
                 is_online_mode = player.get_status()['mode']
                 if is_online_gameType == "SKYBLOCK":
@@ -95,25 +126,79 @@ def profile():
                         is_online_mode = 'the Dungeon Hub'
                     else:
                         is_online_mode = is_online_mode
+                elif is_online_gameType == "PROTOTYPE":
+                    is_online_gameType = "Prototype lobby"
+                elif is_online_gameType == "MAIN":
+                    is_online_gameType = "Main Lobby"
+                elif is_online_gameType == "BEDWARS":
+                    is_online_gameType = "BedWars"
+                    if is_online_mode == "LOBBY":
+                        is_online_mode = "the Lobby"
+                    elif is_online_mode == "EIGHT_ONE":
+                        is_online_mode = "Solos"
+                    elif is_online_mode == "EIGHT_TWO":
+                        is_online_mode = "Duos"
+                    elif is_online_mode == "FOUR_THREE":
+                        is_online_mode = "3v3v3v3"
+                    elif is_online_mode == "FOUR_FOUR":
+                        is_online_mode = "4v4v4v4"
+                    else:
+                        is_online_mode = is_online_mode
+                    '''
+                    Only supporting the following game modes:
+                    SkyBlock, BedWars, Main Lobby, and Prototype Lobby
+                    More will be added soon. 
+                    '''
                 else:
                     is_online_gameType = is_online_gameType
                     is_online_mode = is_online_mode
             elif str(requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
                          'last_logout']).lower() == "none":
+
+                '''
+                This is here to prevent errors, A player can disable certain settings in game to prevent these stats
+                from being checked, Without this, an error will occur when called for these variables.
+                '''
+
                 player_api_settings = "disabled"
-                last_logout_from_now_formatted = "disabled"
+                last_logout_from_now = "disabled"
                 is_online_gameType = "disabled"
                 is_online_mode = "disabled"
+                last_login_from_now = "disabled"
             else:
-                last_logout = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
+                '''
+                This function creates variables for time offline. It's not really necessary but, it gives more insights
+                 on the player.
+                '''
+                last_logout_long = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
                     'last_logout']
-                last_logout = datetime.datetime.fromtimestamp(requests.get('https://api.slothpixel.me/api/players/' +
-                                                                           raw_username).json()[
-                                                                  'last_logout'] // 1000.0)
+                last_logout = datetime.datetime.fromtimestamp(last_logout_long // 1000.0)
                 last_logout_from_now = datetime.datetime.now() - last_logout
-                last_logout_from_now_for = divmod(last_logout_from_now.total_seconds(), 60)
-                last_logout_from_now_formatted = (str(int(round(last_logout_from_now_for[0], 1))) + " minutes " +
-                                                  str(int(round(last_logout_from_now_for[1], 0))) + " seconds ago")
+
+                last_logout_from_now_days = divmod(last_logout_from_now.total_seconds(), 86400)
+                last_logout_from_now_hours = divmod(last_logout_from_now_days[1], 3600)
+                last_logout_from_now_mins = divmod(last_logout_from_now_hours[1], 60)
+                last_logout_from_now_secs = divmod(last_logout_from_now_mins[1], 1)
+
+                if last_logout_from_now_days[0] < 1:
+                    last_logout_from_now = (str(int(round(last_logout_from_now_hours[0], 0))) + " hours " + str(int(round(
+                        last_logout_from_now_mins[0], 0))) + " minutes " + str(
+                        int(round(last_logout_from_now_secs[0], 0)))
+                                           + " seconds ")
+                elif last_logout_from_now_hours[0] < 1 and last_logout_from_now_days[0] < 1:
+                    last_logout_from_now = (str(int(round(last_logout_from_now_mins[0], 0))) + " minutes " + str(int(round(
+                            last_logout_from_now_secs[0], 0))) + " seconds ")
+                elif last_logout_from_now_mins[0] < 1 and last_logout_from_now_hours[0] < 1 and last_logout_from_now_days[0] < 1:
+                    last_logout_from_now = (str(int(round(last_logout_from_now_secs[0], 0))) + " seconds ")
+                else:
+                    last_logout_from_now = (str(int(round(last_logout_from_now_days[0], 0))) + " days " + str(int(round(
+                        last_logout_from_now_hours[0], 0))) + " hours " + str(
+                        int(round(last_logout_from_now_mins[0], 0))) +
+                                           " minutes " + str(int(round(last_logout_from_now_secs[0], 0))) + " seconds ")
+
+                is_online_gameType = "Offline"
+                is_online_mode = "Offline"
+                last_login_from_now = "Offline"
 
             '''
             Just identifying variables for html color
@@ -173,7 +258,8 @@ def profile():
                 rank_plus_color = white
 
             '''
-            Setting up for choosing different profiles.
+            Some players have not joined the SkyBlock game mode, so if I do not check if
+            statistics are in the players stats, it will return an error. 
             '''
             if 'SkyBlock' in str(player.get_stats()):
 
@@ -187,7 +273,7 @@ def profile():
                     cute_name.append(str(profiles[profile]['cute_name']))
                 # print(profile_id[1], cute_name[1])
                 '''
-                Grabbing variables
+                Latest played profiles variable grabing
                 '''
                 last_played_profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()
                 last_played_profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()[
@@ -206,14 +292,13 @@ def profile():
                 last_played_profile_stats_magic_find = last_played_profile_stats['magic_find']
                 last_played_profile_stats_pet_luck = last_played_profile_stats['pet_luck']
 
-                '''
-                Rendering html template
-                '''
-                print(player.get_stats()['SkyBlock'])
             else:
                 flash("Player has no SkyBlock profiles.")
                 return home()
 
+            '''
+            Rendering html template
+            '''
             return render_template('profile.html', username=name, network_rank=network_rank, uuid=uuid,
                                    network_level=network_level, network_exp=network_exp,
                                    network_linked_socialmedia_number=network_linked_socialmedia_number,
@@ -232,7 +317,8 @@ def profile():
                                    last_played_profile_stats_magic_find=last_played_profile_stats_magic_find,
                                    last_played_profile_stats_pet_luck=last_played_profile_stats_pet_luck,
                                    last_played_profile_stats_defense=last_played_profile_stats_defense,
-                                   last_logout_from_now_formatted=last_logout_from_now_formatted)
+                                   last_logout_from_now=last_logout_from_now,
+                                   last_login_from_now=last_login_from_now)
 
         except hypixel.PlayerNotFoundException:
             '''

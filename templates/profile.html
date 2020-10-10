@@ -81,46 +81,58 @@
     </div>
 </header>
 <main class="container">
-    {% if network_rank == "YouTube": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span>
-    </h1>
-    {% elif network_rank == "Admin": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
-    {% elif network_rank == "Moderator": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#00AA00">[MOD] {{ username }}</span></h1>
-    {% elif network_rank == "Helper": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#5555FF">[HELPER] {{ username }}</span></h1>
-    {% elif network_rank == "MVP++": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#FFAA00">[MVP</span><span style="color:#FF5555">++</span><span style="color:#FFAA00">] {{ username }}</span>
-    </h1>
-    {% elif network_rank == "MVP+": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#55FFFF">[MVP</span><span style="color:#FF5555">+</span><span style="color:#55FFFF">] {{ username }}</span>
-    </h1>
-    {% elif network_rank == "MVP": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#55FFFF">[MVP] {{ username }}</span></h1>
-    {% elif network_rank == "VIP+": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span>
-    </h1>
-    {% elif network_rank == "VIP": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#55FF55">[VIP] {{ username }}</span></h1>
-    {% elif network_rank == "Non": %}
-    <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-            style="color:#AAAAAA">{{ username }}</span></h1>
-    {% endif %}
+        {% if username|string() == "Technoblade" %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#FF55FF">[PIG</span><span style="color:#55FFFF">+++</span><span style="color:#FF55FF">] {{ username }}</span></h1>
+        {% elif username|string() == "BadWasabee" %}
+        <h1 translate="no" style=" background: linear-gradient(to right, red, orange, green, cyan, blue, violet);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-family:Minecraft;font-weight: normal;font-style: normal;">[JERRY] {{ username }}</h1>
+        {% elif network_rank == "YouTube": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span></h1>
+        {% elif network_rank == "Admin": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
+        {% elif network_rank == "Moderator": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#00AA00">[MOD] {{ username }}</span></h1>
+        {% elif network_rank == "Helper": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#5555FF">[HELPER] {{ username }}</span></h1>
+        {% elif network_rank == "MVP++": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#FFAA00">[MVP</span><span style="color:{{ rank_plus_color }}">++</span><span style="color:#FFAA00">] {{ username }}</span></h1>
+        {% elif network_rank == "MVP+": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#55FFFF">[MVP</span><span style="color:{{ rank_plus_color }}">+</span><span style="color:#55FFFF">] {{ username }}</span></h1>
+        {% elif network_rank == "MVP": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#55FFFF">[MVP] {{ username }}</span></h1>
+        {% elif network_rank == "VIP+": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span></h1>
+        {% elif network_rank == "VIP": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#55FF55">[VIP] {{ username }}</span></h1>
+        {% elif network_rank == "Non": %}
+        <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
+                style="color:#AAAAAA">{{ username }}</span></h1>
+        {% endif %}
+        {% if is_online|string() == "True" %}
+            <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark> Playing: <strong>{{ is_online_gameType }}</strong> at
+                {{ is_online_mode }}</h4>
+        {% else: %}
+            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark></strong></h4>
+        {% endif %}
+
+
     <hr class="mt-1">
     <div class="row">
         <div class="col-lg-8 order-lg-2">
             <div class="card mb-3">
-                <div class="card-header py-1"><strong>Hypixel Profile</strong></div>
+                <div class="card-header py-1">Showing Statistics for <strong>{{ latest_profile }}</strong></div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><strong>Network Level</strong></div>
@@ -260,13 +272,10 @@
                     </div>
                 </div>
             </div>
-            <div class="ad-container">
-                <div id="nn_mobile_mpu2" class="d-block d-lg-none child-align-center"></div>
-            </div>
             <div class="card mb-3">
                 <div class="card-header py-1">
                     <strong>
-                        Skins (<a href="/minecraft-skins/profile/BadWasabee.2">3</a>)
+                        Profiles ({{ skyblock_number_of_profiles }})
                     </strong>
                 </div>
                 <div class="card-body text-center" style="padding: 3px">

@@ -3,10 +3,10 @@
 <p>I am creating this website (python-based) using flask to check statistics of any player on a popular minecraft server run by Hypixel Studios... First, I am going to implement the Skyblock stat checker, then expand it throughout the year to capture a players stats from other gamemodes. I have no logo, and I am using a generic name. Please proceed with caution.</p>
 (About 20% complete)
 <h2 align="center">Try it out!</h2>
-<h3 align="center">Prerequisites</h3>
+<h3>Prerequisites</h3>
 <p>Python</p>
 <p>Hypixel API Key</p>
-<h3 align="center">Installation</h3>
+<h3>Installation</h3>
 Clone the project install the dependencies.
 <p>`python -m pip install flask`</p>
 <p>`python -m pip install hypixel`</p>
@@ -14,7 +14,7 @@ Clone the project install the dependencies.
 <p>`python -m pip install requests`</p>
 <p>`python -m pip install pyhypixel`</p>
 You will be able to access the site on http://localhost:8080 if you leave the default port.
-<h3 align="center">Search for some of the users.</h3>
+<h3>Search for some of the users.</h3>
 <p>`[YOUTUBE] TimeDeo`</p>
 <p>`[ADMIN] hypixel`</p>
 <p>`[MOD] TGOutbreak`</p>

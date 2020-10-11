@@ -5,7 +5,6 @@ from mojang import MojangAPI
 from hypixelapi import hypixelapi
 import hypixel
 import requests
-import time
 import datetime
 
 app = Flask(__name__)
@@ -33,15 +32,39 @@ def profile():
     uuid = MojangAPI.get_uuid(raw_username)
     if uuid:
         try:
-            '''
-            All essential variables to make the other code run properly
-            '''
             api = hypixelapi.HypixelAPI('e6a09aab-befc-4f53-b668-7fd3fe2a585d')
             player = api.get_player(uuid)
             name = MojangAPI.get_profile(uuid).name
             network_rank = hypixel.Player(raw_username).getRank()['rank']
             network_level = player.get_level()
             network_exp = int(player.get_exp())
+
+            def format_dates(long_number):
+                format_long_number = datetime.datetime.fromtimestamp(long_number // 1000.0)
+                difference_of_number = datetime.datetime.now() - format_long_number
+
+                number_from_now_days = divmod(difference_of_number.total_seconds(), 86400)
+                number_from_now_hours = divmod(number_from_now_days[1], 3600)
+                number_from_now_mins = divmod(number_from_now_hours[1], 60)
+                number_from_now_secs = divmod(number_from_now_mins[1], 1)
+
+                if number_from_now_days[0] < 1 and number_from_now_hours[0] > 1:
+                    return (str(int(round(number_from_now_hours[0], 0))) + " hours " + str(int(round(
+                        number_from_now_mins[0], 0))) + " minutes " + str(int(round(number_from_now_secs[0], 0)))
+                            + " seconds ")
+
+                elif number_from_now_hours[0] < 1 and number_from_now_days[0] < 1:
+                    return (str(int(round(number_from_now_mins[0], 0))) + " minutes " + str(int(round(
+                        number_from_now_secs[0], 0))) + " seconds ")
+
+                elif number_from_now_mins[0] < 1 and number_from_now_days[0] < 1 and number_from_now_hours[0] < 1:
+                    return (str(int(round(number_from_now_secs[0], 0))) + " seconds ")
+
+                else:
+                    return (str(int(round(number_from_now_days[0], 0))) + " days " + str(int(round(
+                        number_from_now_hours[0], 0))) + " hours " + str(
+                        int(round(number_from_now_mins[0], 0))) +
+                            " minutes " + str(int(round(number_from_now_secs[0], 0))) + " seconds ")
             '''
             Social media of player.
             '''
@@ -71,31 +94,13 @@ def profile():
                 it to something else to prevent errors. This also gets a player's
                 time online, location (game mode), and other stats.
                 '''
-
                 last_login_long = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
                     'last_login']
-                last_login = datetime.datetime.fromtimestamp(last_login_long // 1000.0)
-                last_login_from_now = datetime.datetime.now() - last_login
 
-                last_login_from_now_days = divmod(last_login_from_now.total_seconds(), 86400)
-                last_login_from_now_hours = divmod(last_login_from_now_days[1], 3600)
-                last_login_from_now_mins = divmod(last_login_from_now_hours[1], 60)
-                last_login_from_now_secs = divmod(last_login_from_now_mins[1], 1)
-
-                if last_login_from_now_days[0] < 1:
-                    last_login_from_now = (str(int(round(last_login_from_now_hours[0], 0))) + " hours " + str(int(round(
-                        last_login_from_now_mins[0], 0))) + " minutes " + str(int(round(last_login_from_now_secs[0], 0)))
-                                           + " seconds ")
-                elif last_login_from_now_hours[0] < 1 and last_login_from_now_days[0] < 1:
-                    last_login_from_now = (str(int(round(last_login_from_now_mins[0], 0))) + " minutes " + str(int(round(
-                        last_login_from_now_secs[0], 0))) + " seconds ")
-                elif last_login_from_now_mins[0] < 1 and last_login_from_now_days[0] < 1 and last_login_from_now_hours[0] < 1:
-                    last_login_from_now = (str(int(round(last_login_from_now_secs[0], 0))) + " seconds ")
+                if not str(last_login_long) == "None":
+                    last_login_from_now = format_dates(last_login_long)
                 else:
-                    last_login_from_now = (str(int(round(last_login_from_now_days[0], 0))) + " days " + str(int(round(
-                        last_login_from_now_hours[0], 0))) + " hours " + str(
-                        int(round(last_login_from_now_mins[0], 0))) +
-                                           " minutes " + str(int(round(last_login_from_now_secs[0], 0))) + " seconds ")
+                    last_login_from_now = "null"
 
                 last_logout_from_now = 'Online'
                 is_online_gameType = player.get_status()['gameType']
@@ -172,90 +177,47 @@ def profile():
                 '''
                 last_logout_long = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()[
                     'last_logout']
-                last_logout = datetime.datetime.fromtimestamp(last_logout_long // 1000.0)
-                last_logout_from_now = datetime.datetime.now() - last_logout
-
-                last_logout_from_now_days = divmod(last_logout_from_now.total_seconds(), 86400)
-                last_logout_from_now_hours = divmod(last_logout_from_now_days[1], 3600)
-                last_logout_from_now_mins = divmod(last_logout_from_now_hours[1], 60)
-                last_logout_from_now_secs = divmod(last_logout_from_now_mins[1], 1)
-
-                if last_logout_from_now_days[0] < 1:
-                    last_logout_from_now = (str(int(round(last_logout_from_now_hours[0], 0))) + " hours " + str(int(round(
-                        last_logout_from_now_mins[0], 0))) + " minutes " + str(
-                        int(round(last_logout_from_now_secs[0], 0)))
-                                           + " seconds ")
-                elif last_logout_from_now_hours[0] < 1 and last_logout_from_now_days[0] < 1:
-                    last_logout_from_now = (str(int(round(last_logout_from_now_mins[0], 0))) + " minutes " + str(int(round(
-                            last_logout_from_now_secs[0], 0))) + " seconds ")
-                elif last_logout_from_now_mins[0] < 1 and last_logout_from_now_hours[0] < 1 and last_logout_from_now_days[0] < 1:
-                    last_logout_from_now = (str(int(round(last_logout_from_now_secs[0], 0))) + " seconds ")
-                else:
-                    last_logout_from_now = (str(int(round(last_logout_from_now_days[0], 0))) + " days " + str(int(round(
-                        last_logout_from_now_hours[0], 0))) + " hours " + str(
-                        int(round(last_logout_from_now_mins[0], 0))) +
-                                           " minutes " + str(int(round(last_logout_from_now_secs[0], 0))) + " seconds ")
-
+                last_logout_from_now = format_dates(last_logout_long)
                 is_online_gameType = "Offline"
                 is_online_mode = "Offline"
                 last_login_from_now = "Offline"
-
-            '''
-            Just identifying variables for html color
-            '''
-            black = '#000000'
-            dark_blue = '#0000AA'
-            dark_green = '#00AA00'
-            dark_aqua = '#00AAAA'
-            dark_red = '#AA0000'
-            dark_purple = '#AA00AA'
-            gold = '#FFAA00'
-            gray = '#AAAAAA'
-            dark_gray = '#555555'
-            blue = '#5555FF'
-            green = '#55FF55'
-            aqua = '#55FFFF'
-            red = '#FF5555'
-            light_purple = '#FF55FF'
-            yellow = '#FFFF55'
-            white = '#FFFFFF'
 
             '''
             Making sure for people who have MVP+ & higher get their correct plus color casted to them.
             '''
             rpc = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()['rank_plus_color']
             if str(rpc) == "&0":
-                rank_plus_color = black
+                rank_plus_color = 'mc-black'
             elif str(rpc) == "&1":
-                rank_plus_color = dark_blue
+                rank_plus_color = 'mc-dark_blue'
             elif str(rpc) == "&2":
-                rank_plus_color = dark_green
+                rank_plus_color = 'mc-dark_green'
             elif str(rpc) == "&3":
-                rank_plus_color = dark_aqua
+                rank_plus_color = 'mc-dark_aqua'
             elif str(rpc) == "&4":
-                rank_plus_color = dark_red
+                rank_plus_color = 'mc-dark_red'
             elif str(rpc) == "&5":
-                rank_plus_color = dark_purple
+                rank_plus_color = 'mc-dark_purple'
             elif str(rpc) == "&6":
-                rank_plus_color = gold
+                rank_plus_color = 'mc-gold'
             elif str(rpc) == "&7":
-                rank_plus_color = gray
+                rank_plus_color = 'mc-gray'
             elif str(rpc) == "&8":
-                rank_plus_color = dark_gray
+                rank_plus_color = 'mc-dark_gray'
             elif str(rpc) == "&9":
-                rank_plus_color = blue
+                rank_plus_color = 'mc-blue'
             elif str(rpc) == "&a":
-                rank_plus_color = green
+                rank_plus_color = 'mc-green'
             elif str(rpc) == "&b":
-                rank_plus_color = aqua
+                rank_plus_color = 'mc-aqua'
             elif str(rpc) == "&c":
-                rank_plus_color = red
+                rank_plus_color = 'mc-red'
             elif str(rpc) == "&d":
-                rank_plus_color = light_purple
+                rank_plus_color = 'mc-light_purple'
             elif str(rpc) == "&e":
-                rank_plus_color = yellow
+                rank_plus_color = 'mc-yellow'
             elif str(rpc) == "&f":
-                rank_plus_color = white
+                rank_plus_color = 'mc-white'
 
             '''
             Some players have not joined the SkyBlock game mode, so if I do not check if
@@ -291,6 +253,26 @@ def profile():
                 last_played_profile_stats_sea_creature_chance = last_played_profile_stats['sea_creature_chance']
                 last_played_profile_stats_magic_find = last_played_profile_stats['magic_find']
                 last_played_profile_stats_pet_luck = last_played_profile_stats['pet_luck']
+                last_played_profile_skills = last_played_profile['members'][uuid]['skills']
+
+                def human_format(num):
+                    num = float('{:.3g}'.format(num))
+                    magnitude = 0
+                    while abs(num) >= 1000:
+                        magnitude += 1
+                        num /= 1000.0
+                    return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'),
+                                         ['', 'K', 'M', 'B', 'T'][magnitude])
+
+                if 'taming' in str(last_played_profile_skills):
+                    skill_info_api_check = 'enabled'
+                else:
+                    skill_info_api_check = 'disabled'
+
+                '''
+                Formatting large numbers to make it look nice. 
+                '''
+
 
             else:
                 flash("Player has no SkyBlock profiles.")
@@ -311,14 +293,17 @@ def profile():
                                    last_played_profile_stats_speed=last_played_profile_stats_speed,
                                    last_played_profile_stats_crit_chance=last_played_profile_stats_crit_chance,
                                    last_played_profile_stats_crit_damage=last_played_profile_stats_crit_damage,
-                                   last_played_profile_stats_bonus_attack_speed=last_played_profile_stats_bonus_attack_speed,
+                                   last_played_profile_stats_bonus_attack_speed=
+                                   last_played_profile_stats_bonus_attack_speed,
                                    last_played_profile_stats_intelligence=last_played_profile_stats_intelligence,
-                                   last_played_profile_stats_sea_creature_chance=last_played_profile_stats_sea_creature_chance,
+                                   last_played_profile_stats_sea_creature_chance=
+                                   last_played_profile_stats_sea_creature_chance,
                                    last_played_profile_stats_magic_find=last_played_profile_stats_magic_find,
                                    last_played_profile_stats_pet_luck=last_played_profile_stats_pet_luck,
                                    last_played_profile_stats_defense=last_played_profile_stats_defense,
                                    last_logout_from_now=last_logout_from_now,
-                                   last_login_from_now=last_login_from_now)
+                                   last_login_from_now=last_login_from_now, last_played_profile_skills=last_played_profile_skills,
+                                   human_format=human_format, skill_info_api_check=skill_info_api_check)
 
         except hypixel.PlayerNotFoundException:
             '''
@@ -334,6 +319,7 @@ def profile():
         '''
         flash("No user with the name '" + raw_username + "' was found.")
         return home()
+
 
 
 if __name__ == "__main__":

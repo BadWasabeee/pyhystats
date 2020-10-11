@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>{{ username }}'s | HyStats</title>
-    <style>
-        body {
-            --cmpBgColor: #fff;
-            --cmpTextColor: #333;
-            --cmpLinkColor: #5f5f5f;
-            --cmpPurposesColor: #5f5f5f;
-            --cmpBrandColor: #f65002;
-            --cmpLogo: url('https://cmp.network-n.com/js/img/logo.svg');
-        }
-    </style>
-    <script>window.AdSlots = window.AdSlots || {cmd: [], disableScripts: ['gpt', 'bk']};</script>
-    <script async src="https://tags.bkrtx.com/js/bk-coretag.js"></script>
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script async src="https://static.namemc.com/dist/namemc.min.js?v=ead7c656dfe3b42335654368775b5a16"></script>
     <link rel="shortcut icon" sizes="16x16" href="https://crafatar.com/avatars/{{ uuid }}">
     <link rel="shortcut icon" sizes="128x128" href="https://crafatar.com/avatars/{{ uuid }}">
     <link rel="shortcut icon" sizes="192x192" href="https://crafatar.com/avatars/{{ uuid }}">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/theme-dark.min.css" data-skin="default">
-    <link rel="stylesheet" href="https://static.namemc.com/assets/stylesheets/custom.css">
-    <link rel="stylesheet" href="https://static.namemc.com/css/style.css?v=7fce98010eee7c2015effcf1f207aa9e">
-    <link rel="stylesheet" href="https://static.namemc.com/css/all.min.css">
-    <link rel="stylesheet" href="https://static.namemc.com/css/mc-style.css?v=00c0af37a878c778519f6bcefeaf59dc">
+    <link rel="stylesheet" href="/static/theme-dark.min.css" data-skin="default">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/mc-style.css">
+    <link rel="stylesheet" href="http://sky.lea.moe/resources/css/inventory.css?v13">
+    <link rel="stylesheet" href="/static/skill.css">
     <style>
         td {
             padding: 4px;
@@ -83,42 +68,42 @@
 <main class="container">
         {% if username|string() == "Technoblade" %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#FF55FF">[PIG</span><span style="color:#55FFFF">+++</span><span style="color:#FF55FF">] {{ username }}</span></h1>
+                class="mc-light-purple">[PIG</span><span class="mc-aqua">+++</span><span class="mc-light-purple">] {{ username }}</span></h1>
         {% elif network_rank == "YouTube": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#FF5555">[</span><span style="color:#FFFFFF">YOUTUBE</span><span style="color:#FF5555">] {{ username }}</span></h1>
+                class="mc-red">[</span><span class="mc-white">YOUTUBE</span><span class="mc-red">] {{ username }}</span></h1>
         {% elif network_rank == "Admin": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#FF5555">[ADMIN] {{ username }}</span></h1>
+                class="mc-red">[ADMIN] {{ username }}</span></h1>
         {% elif network_rank == "Moderator": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#00AA00">[MOD] {{ username }}</span></h1>
+                class="mc-dark-green">[MOD] {{ username }}</span></h1>
         {% elif network_rank == "Helper": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#5555FF">[HELPER] {{ username }}</span></h1>
+                class="mc-blue">[HELPER] {{ username }}</span></h1>
         {% elif network_rank == "MVP++": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#FFAA00">[MVP</span><span style="color:{{ rank_plus_color }}">++</span><span style="color:#FFAA00">] {{ username }}</span></h1>
+                class="mc-gold">[MVP</span><span class="{{ rank_plus_color }}">++</span><span class="mc-gold">] {{ username }}</span></h1>
         {% elif network_rank == "MVP+": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#55FFFF">[MVP</span><span style="color:{{ rank_plus_color }}">+</span><span style="color:#55FFFF">] {{ username }}</span></h1>
+                class="mc-aqua">[MVP</span><span class="{{ rank_plus_color }}">+</span><span class="mc-aqua">] {{ username }}</span></h1>
         {% elif network_rank == "MVP": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#55FFFF">[MVP] {{ username }}</span></h1>
+                class="mc-aqua">[MVP] {{ username }}</span></h1>
         {% elif network_rank == "VIP+": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#55FF55">[VIP</span><span style="color:#FFAA00">+</span><span style="color:#55FF55">] {{ username }}</span></h1>
+                class="mc-green">[VIP</span><span class="mc-gold">+</span><span class="mc-green">] {{ username }}</span></h1>
         {% elif network_rank == "VIP": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#55FF55">[VIP] {{ username }}</span></h1>
+                class="mc-green">[VIP] {{ username }}</span></h1>
         {% elif network_rank == "Non": %}
         <h1 translate="no" style="font-family:Minecraft;font-weight: normal;font-style: normal;"><span
-                style="color:#AAAAAA">{{ username }}</span></h1>
+                class="mc-gray">{{ username }}</span></h1>
         {% endif %}
         {% if is_online|string() == "True" %}
             <h4><mark style="background-color:#55FF55;border-radius: 10px;padding: 3px">Currently Online</mark> <span style="font-weight: lighter">for</span> <strong> {{ last_login_from_now }}</strong>  <span style="font-weight: lighter">Currently Playing:</span><strong> {{ is_online_gameType }}</strong><span style="font-weight: lighter"> at </span><strong>{{ is_online_mode }}</strong></h4>
         {% else: %}
-            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark>   <span style="font-weight: lighter">Last Seen:</span><strong> {{ last_logout_from_now }}</strong></h4>
+            <h4><mark style="background-color:#FF5555;border-radius: 10px;padding: 3px">Currently Offline</mark>   <span style="font-weight: lighter">Last Seen:</span><strong> {{ last_logout_from_now }}</strong><span style="font-weight: lighter">ago.</span></h4>
         {% endif %}
 
 
@@ -129,7 +114,8 @@
                 <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for</span> <strong>{{ last_played_profile_name }}</strong></h6></div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
-                        <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/health.png" height="20" width="20"> <span style="color:#EF524F"><strong>Health</strong></span></div>
+                        <div class="col      order-md-1 col-md-4">
+                            <img src="/static/img/icons/health.png" height="20" width="20" title="Health"> <span style="color:#EF524F"><strong>Health</strong></span></div>
                         <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_health }}</samp>
                         </div>
                     </div>
@@ -183,24 +169,210 @@
                         <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_pet_luck }}</samp>
                         </div>
                     </div>
-                    <div class="row no-gutters">
-                        <div class="col col-md-4"><strong>Views</strong></div>
-                        <div class="col-auto">{{ views }} / month</div>
-                    </div>
                 </div>
             </div>
+
+
+            <div id="skill_levels_container">
+                    <div id="other_skills">
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['taming']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-383_0_12"></div></div>
+                                <div class="skill-name">Taming <span class="skill-level">{{ last_played_profile_skills['taming']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['taming']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['taming']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['taming']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-383_0_12"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Taming <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['taming']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-383_0_12"></div></div>
+                        <div class="skill-name">Taming <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Taming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['farming']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-294_0"></div></div>
+                                <div class="skill-name">Farming <span class="skill-level">{{ last_played_profile_skills['farming']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['farming']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['farming']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['farming']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-294_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Farming <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['farming']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-294_0"></div></div>
+                        <div class="skill-name">Farming <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['mining']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-274_0"></div></div>
+                                <div class="skill-name">Mining <span class="skill-level">{{ last_played_profile_skills['mining']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['mining']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['mining']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['mining']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-274_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Mining <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['mining']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-274_0"></div></div>
+                        <div class="skill-name">Mining <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-272_0"></div></div>
+                            <div class="skill-name">Combat <span class="skill-level">23</span></div>
+                            <div class="skill-bar" data-skill="Combat">
+                                <div class="skill-progress-bar" style="width: 68.21216666666666%"></div>
+                                    <div class="skill-progress-text">
+                                        409K / 600K XP
+                                    </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-6_3"></div></div>
+                            <div class="skill-name">Foraging <span class="skill-level">24</span></div>
+                            <div class="skill-bar" data-skill="Foraging">
+                                <div class="skill-progress-bar" style="width: 97.10128571428571%"></div>
+                                    <div class="skill-progress-text">
+                                        679K / 700K XP
+                                    </div>
+                            </div>
+                        </div>
+
+
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-346_0"></div></div>
+                            <div class="skill-name">Fishing <span class="skill-level">18</span></div>
+                            <div class="skill-bar" data-skill="Fishing">
+                                <div class="skill-progress-bar" style="width: 24.629%"></div>
+                                    <div class="skill-progress-text">
+                                        24K / 100K XP
+                                    </div>
+                            </div>
+                         </div>
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-116_0"></div></div>
+                            <div class="skill-name">Enchanting <span class="skill-level">18</span></div>
+                            <div class="skill-bar" data-skill="Enchanting">
+                                <div class="skill-progress-bar" style="width: 25.45%"></div>
+                                    <div class="skill-progress-text">
+                                        25K / 100K XP
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-379_0"></div></div>
+                            <div class="skill-name">Alchemy <span class="skill-level">13</span></div>
+                            <div class="skill-bar" data-skill="Alchemy">
+                                <div class="skill-progress-bar" style="width: 31.553333333333335%"></div>
+                                    <div class="skill-progress-text">
+                                        4.7K / 15K XP
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-58_0"></div></div>
+                            <div class="skill-name">Carpentry <span class="skill-level">23</span></div>
+                            <div class="skill-bar" data-skill="Carpentry">
+                                <div class="skill-progress-bar" style="width: 66.48483333333334%"></div>
+                                    <div class="skill-progress-text">
+                                        398K / 600K XP
+                                    </div>
+                            </div>
+                        </div>
+
+
+                        <div class="skill xp-skill ">
+                            <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
+                            <div class="skill-name">Runecrafting <span class="skill-level">23</span></div>
+                            <div class="skill-bar" data-skill="Runecrafting">
+                                <div class="skill-progress-bar" style="width: 34.47712418300654%"></div>
+                                    <div class="skill-progress-text">
+                                        5.2K / 16K XP
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
             <div class="card mb-3">
-                <div class="card-header py-1"><strong>Name History</strong></div>
+                <div class="card-header py-1" align="center"><strong>Minions</strong></div>
                 <div class="card-body py-1" style="overflow-y: auto; max-height: 10rem">
                     <div class="row no-gutters">
-                        <div class="col-auto order-md-1          text-nowrap text-right pr-2"><strong>4</strong></div>
-                        <div class="col      order-md-2 col-md-4 text-nowrap"><a translate="no" href="/name/BadWasabee">BadWasabee</a>
-                        </div>
-                        <div class="col-auto order-md-4          text-nowrap text-right"><a class="copy-button"
-                                                                                            href="javascript:void(0)"
-                                                                                            data-clipboard-text="BadWasabee"
-                                                                                            onclick="return false">Copy</a>
-                        </div>
                         <div class="col-12   order-md-3 col-md">
                             <time datetime="2020-01-12T22:41:37.000Z">2020-01-12T22:41:37.000Z</time>
                         </div>

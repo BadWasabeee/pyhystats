@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/mc-style.css">
     <link rel="stylesheet" href="http://sky.lea.moe/resources/css/inventory.css?v13">
-    <link rel="stylesheet" href="/static/skill.css">
+<!--    <link rel="stylesheet" href="/static/skill.css">-->
     <style>
         td {
             padding: 4px;
@@ -289,84 +289,273 @@
                     </div>
                     {% endif %}
 
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-272_0"></div></div>
-                            <div class="skill-name">Combat <span class="skill-level">23</span></div>
-                            <div class="skill-bar" data-skill="Combat">
-                                <div class="skill-progress-bar" style="width: 68.21216666666666%"></div>
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['combat']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-272_0"></div></div>
+                                <div class="skill-name">Combat <span class="skill-level">{{ last_played_profile_skills['combat']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['combat']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        409K / 600K XP
+                                        {{ human_format(last_played_profile_skills['combat']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['combat']['xpForNext']) }} XP
                                     </div>
+                                </div>
                             </div>
-                        </div>
-
-
-
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-6_3"></div></div>
-                            <div class="skill-name">Foraging <span class="skill-level">24</span></div>
-                            <div class="skill-bar" data-skill="Foraging">
-                                <div class="skill-progress-bar" style="width: 97.10128571428571%"></div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-272_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Combat <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        679K / 700K XP
+                                        {{ human_format(last_played_profile_skills['combat']['xpCurrent']) }} XP
                                     </div>
+                                </div>
                             </div>
-                        </div>
-
-
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-346_0"></div></div>
-                            <div class="skill-name">Fishing <span class="skill-level">18</span></div>
-                            <div class="skill-bar" data-skill="Fishing">
-                                <div class="skill-progress-bar" style="width: 24.629%"></div>
-                                    <div class="skill-progress-text">
-                                        24K / 100K XP
-                                    </div>
-                            </div>
-                         </div>
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-116_0"></div></div>
-                            <div class="skill-name">Enchanting <span class="skill-level">18</span></div>
-                            <div class="skill-bar" data-skill="Enchanting">
-                                <div class="skill-progress-bar" style="width: 25.45%"></div>
-                                    <div class="skill-progress-text">
-                                        25K / 100K XP
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-379_0"></div></div>
-                            <div class="skill-name">Alchemy <span class="skill-level">13</span></div>
-                            <div class="skill-bar" data-skill="Alchemy">
-                                <div class="skill-progress-bar" style="width: 31.553333333333335%"></div>
-                                    <div class="skill-progress-text">
-                                        4.7K / 15K XP
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-58_0"></div></div>
-                            <div class="skill-name">Carpentry <span class="skill-level">23</span></div>
-                            <div class="skill-bar" data-skill="Carpentry">
-                                <div class="skill-progress-bar" style="width: 66.48483333333334%"></div>
-                                    <div class="skill-progress-text">
-                                        398K / 600K XP
-                                    </div>
-                            </div>
-                        </div>
-
-
-                        <div class="skill xp-skill ">
-                            <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
-                            <div class="skill-name">Runecrafting <span class="skill-level">23</span></div>
-                            <div class="skill-bar" data-skill="Runecrafting">
-                                <div class="skill-progress-bar" style="width: 34.47712418300654%"></div>
-                                    <div class="skill-progress-text">
-                                        5.2K / 16K XP
-                                    </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-272_0"></div></div>
+                        <div class="skill-name">Combat <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['foraging']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-6_3"></div></div>
+                                <div class="skill-name">Foraging <span class="skill-level">{{ last_played_profile_skills['foraging']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['foraging']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['foraging']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['foraging']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-6_3"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Foraging <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['foraging']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-6_3"></div></div>
+                        <div class="skill-name">Foraging <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['fishing']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-346_0"></div></div>
+                                <div class="skill-name">Fishing <span class="skill-level">{{ last_played_profile_skills['fishing']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['fishing']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['fishing']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['fishing']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-346_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Fishing <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['fishing']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-346_0"></div></div>
+                        <div class="skill-name">Fishing <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['enchanting']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-116_0"></div></div>
+                                <div class="skill-name">Enchanting <span class="skill-level">{{ last_played_profile_skills['enchanting']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['enchanting']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['enchanting']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['enchanting']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-116_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Enchanting <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['enchanting']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-116_0"></div></div>
+                        <div class="skill-name">Enchanting <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['alchemy']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-379_0"></div></div>
+                                <div class="skill-name">Alchemy <span class="skill-level">{{ last_played_profile_skills['alchemy']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['alchemy']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['alchemy']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['alchemy']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-379_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Alchemy <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['alchemy']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-379_0"></div></div>
+                        <div class="skill-name">Alchemy <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if 'carpentry' in last_played_profile_skills %}
+                        {% if last_played_profile_skills['carpentry']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-58_0"></div></div>
+                                <div class="skill-name">Carpentry <span class="skill-level">{{ last_played_profile_skills['carpentry']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['carpentry']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['carpentry']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['carpentry']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-58_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Carpentry <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['carpentry']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-58_0"></div></div>
+                        <div class="skill-name">Carpentry <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if skill_info_api_check == "enabled" %}
+                        {% if last_played_profile_skills['runecrafting']['level'] < 50 %}
+                            <div class="skill xp-skill ">
+                                <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
+                                <div class="skill-name">Runecrafting <span class="skill-level">{{ last_played_profile_skills['runecrafting']['level'] }}</span></div>
+                                <div class="skill-bar" data-skill="Taming">
+                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['runecrafting']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['runecrafting']['xpCurrent']) }} XP /
+                                        {{ human_format(last_played_profile_skills['runecrafting']['xpForNext']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="skill xp-skill maxed-skill">
+                                <div class="skill-icon"><div class="item-icon icon-378_0"></div><div class="piece-shine"></div></div>
+                                <div class="skill-name">Runecrafting <span class="skill-level">50</span></div>
+                                <div class="skill-bar" data-skill="Farming">
+                                    <div class="skill-progress-bar" style="width:100%"></div>
+                                    <div class="skill-progress-text">
+                                        {{ human_format(last_played_profile_skills['runecrafting']['xpCurrent']) }} XP
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                    <div class="skill xp-skill ">
+                        <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
+                        <div class="skill-name">Runecrafting <span class="skill-level">0</span></div>
+                        <div class="skill-bar" data-skill="Farming">
+                            <div class="skill-progress-bar" style="width:0%"></div>
+                            <div class="skill-progress-text">
+                                0 XP / 0 XP
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+            </div>
             </div>
 
             <div class="card mb-3">

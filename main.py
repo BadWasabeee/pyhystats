@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort
+from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
 import os
 import hypixel
 from mojang import MojangAPI
@@ -36,8 +36,6 @@ def profile():
             player = api.get_player(uuid)
             name = MojangAPI.get_profile(uuid).name
             network_rank = hypixel.Player(raw_username).getRank()['rank']
-            network_level = player.get_level()
-            network_exp = int(player.get_exp())
 
             def format_dates(long_number):
                 format_long_number = datetime.datetime.fromtimestamp(long_number // 1000.0)
@@ -66,7 +64,7 @@ def profile():
                         int(round(number_from_now_mins[0], 0))) +
                             " minutes " + str(int(round(number_from_now_secs[0], 0))) + " seconds ")
             '''
-            Social media of player.
+            A player can link their social media to their account. This allows for me to properly display it.
             '''
             links = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()['links']
 
@@ -235,8 +233,24 @@ def profile():
                     cute_name.append(str(profiles[profile]['cute_name']))
                 # print(profile_id[1], cute_name[1])
                 '''
-                Latest played profiles variable grabing
+                Latest played profiles variable grabbing
                 '''
+                # def profile_stats(profile_id):
+                #     profile_catcher = requests.get("https://api.slothpixel.me/api/skyblock/profile/" + name + "/" + profile_id).json()
+                #     profile_name = profiles[profile_id]['cute_name']
+                #     profile_attributes = profile_catcher['members'][uuid]['attributes']
+                #     profile_attributes_health = profile_attributes['health']
+                #     profile_attributes_defense = profile_attributes['defense']
+                #     profile_attributes_strength = profile_attributes['strength']
+                #     profile_attributes_speed = profile_attributes['speed']
+                #     profile_attributes_crit_chance = profile_attributes['crit_chance']
+                #     profile_attributes_crit_damage = profile_attributes['crit_damage']
+                #     profile_attributes_bonus_attack_speed = profile_attributes['bonus_attack_speed']
+                #     profile_attributes_intelligence = profile_attributes['intelligence']
+                #     profile_attributes_sea_creature_chance = profile_attributes['sea_creature_chance']
+                #     profile_attributes_magic_find = profile_attributes['magic_find']
+                #     profile_attributes_pet_luck = profile_attributes['pet_luck']
+
                 last_played_profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()
                 last_played_profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()[
                     'id']
@@ -269,10 +283,6 @@ def profile():
                 else:
                     skill_info_api_check = 'disabled'
 
-                '''
-                Formatting large numbers to make it look nice. 
-                '''
-
 
             else:
                 flash("Player has no SkyBlock profiles.")
@@ -282,7 +292,6 @@ def profile():
             Rendering html template
             '''
             return render_template('profile.html', username=name, network_rank=network_rank, uuid=uuid,
-                                   network_level=network_level, network_exp=network_exp,
                                    network_linked_socialmedia_number=network_linked_socialmedia_number,
                                    TWITTER=TWITTER, TWITCH=TWITCH, YOUTUBE=YOUTUBE, INSTAGRAM=INSTAGRAM,
                                    DISCORD=DISCORD, HYPIXEL=HYPIXEL, is_online=is_online,
@@ -319,7 +328,6 @@ def profile():
         '''
         flash("No user with the name '" + raw_username + "' was found.")
         return home()
-
 
 
 if __name__ == "__main__":

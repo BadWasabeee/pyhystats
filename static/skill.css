@@ -82,18 +82,6 @@ a:hover{
     color: #f78dc2;
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 48px;
-    background-color: #282828;
-    z-index: 1000;
-    line-height: 48px;
-    overflow: hidden;
-}
-
 #not_supported{
     position: fixed;
     top: 45px;

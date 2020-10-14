@@ -169,11 +169,17 @@
                         <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_pet_luck }}</samp>
                         </div>
                     </div>
+                    <div class="additional-stat"><span class="stat-name">Last Area: </span><span class="stat-value">Hub</span></div>
+                    <div class="additional-stat"><span class="stat-name">Last Updated: </span><span class="stat-value">3 hours ago</span></div>
+                    <div class="additional-stat"><span class="stat-name">Joined: </span><span class="stat-value">a year ago</span></div>
+                    <div class="additional-stat"><span class="stat-name">Purse: </span><span class="stat-value">$63.50</span></div>
+                    <div class="additional-stat"><span class="stat-name">Average Skill Level: </span><span class="stat-value">29.6</span></div>
+                    <div class="additional-stat"><span class="stat-name">Fairy Souls: </span><span class="stat-value">187 / 209</span></div>
                 </div>
             </div>
-
-
-            <div id="skill_levels_container">
+            <div class="card mb-3">
+                <div class="card-header py-1" align="center"><strong>Skills</strong></div>
+                    <div>
                     <div id="other_skills">
                     {% if skill_info_api_check == "enabled" %}
                         {% if last_played_profile_skills['taming']['level'] < 50 %}
@@ -555,18 +561,8 @@
                         </div>
                     </div>
                     {% endif %}
-                    <div class="additional-stat"><span class="stat-name">Last Area: </span><span class="stat-value">Hub</span></div>
-                    <div class="additional-stat"><span class="stat-name">Last Updated: </span><span class="stat-value">3 hours ago</span></div>
-                    <div class="additional-stat"><span class="stat-name">Joined: </span><span class="stat-value">a year ago</span></span></div>
-                    <div class="additional-stat"><span class="stat-name">Purse: </span><span class="stat-value">$63.50</span></div>
-                    <div class="additional-stat"><span class="stat-name">Average Skill Level: </span><span class="stat-value">29.6</span></div>
-                    <div class="additional-stat"><span class="stat-name">Fairy Souls: </span><span class="stat-value">187 / 209</span></div>
-
                 </div>
             </div>
-
-            <div class="card mb-3">
-                <div class="card-header py-1" align="center"><strong>Minions</strong></div>
                 <div class="card-body py-1" style="overflow-y: auto; max-height: 10rem">
                     <div class="row no-gutters">
                         <div class="col-12   order-md-3 col-md">

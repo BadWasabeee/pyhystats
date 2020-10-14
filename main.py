@@ -1,15 +1,16 @@
-from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
+from flask import Flask, flash, redirect, render_template, request, session
 import os
 import hypixel
 from mojang import MojangAPI
 from hypixelapi import hypixelapi
-import hypixel
 import requests
 import datetime
+import json
 
 app = Flask(__name__)
 
-keys = ['e6a09aab-befc-4f53-b668-7fd3fe2a585d', 'e6a09aab-befc-4f53-b668-7fd3fe2a585d']
+key_file = open("keys.json")
+keys = json.load(key_file)['api_key']
 hypixel.setKeys(keys)
 
 

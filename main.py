@@ -47,7 +47,7 @@ def profile():
                 number_from_now_mins = divmod(number_from_now_hours[1], 60)
                 number_from_now_secs = divmod(number_from_now_mins[1], 1)
 
-                if number_from_now_days[0] < 1 and number_from_now_hours[0] > 1:
+                if number_from_now_days[0] < 1 and number_from_now_hours[0] >= 1:
                     return (str(int(round(number_from_now_hours[0], 0))) + " hours " + str(int(round(
                         number_from_now_mins[0], 0))) + " minutes " + str(int(round(number_from_now_secs[0], 0)))
                             + " seconds ")
@@ -219,7 +219,7 @@ def profile():
                                    last_logout_from_now=last_logout_from_now, last_login_from_now=last_login_from_now,
                                    human_format=human_format, skill_info_api_check=skill_info_api_check, profile=profile,
                                    profile_name=profile_name, profile_attributes=profile_attributes,
-                                   profile_skills=profile_skills)
+                                   profile_skills=profile_skills, is_online_mode=is_online_mode)
 
         except hypixel.PlayerNotFoundException:
             flash("The user has not played Hypixel.")

@@ -111,62 +111,62 @@
     <div class="row">
         <div class="col-lg-8 order-lg-2">
             <div class="card mb-3">
-                <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for</span> <strong>{{ last_played_profile_name }}</strong></h6></div>
+                <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for</span> <strong>{{ profile_name }}</strong></h6></div>
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4">
                             <img src="/static/img/icons/health.png" height="20" width="20" title="Health"> <span style="color:#EF524F"><strong>Health</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_health }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['health'] }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/defense.png" height="20" width="20"> <span style="color:#9CCC65"><strong>Defense</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_defense }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['defense'] }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/strength-new.png" height="20" width="20"> <span style="color:#EF524F"><strong>Strength</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_strength }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['strength'] }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/speed.png" height="20" width="20"> <span style="color:#FFFFFF"><strong>Speed</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_speed }}%</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['speed'] }}%</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/crit-chance.png" height="20" width="20"> <span style="color:#7986CB"><strong>Crit Chance</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_crit_chance }}%</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['crit_chance'] }}%</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/crit-damage.png" height="20" width="20"> <span style="color:#7986CB"><strong>Crit Damage</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_crit_damage }}%</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['crit_damage'] }}%</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/bonus-attack-speed.png" height="20" width="20"> <span style="color:#F7F779"><strong>Attack Speed</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_bonus_attack_speed }}%</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['bonus_attack_speed'] }}%</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/intelligence.png" height="20" width="20"> <span style="color:#81D4FA"><strong>Intelligence</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_intelligence }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['intelligence'] }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/sea-creature-chance.png" height="20" width="20"> <span style="color:#1CD2D2"><strong>SC Chance</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_sea_creature_chance }}%</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['sea_creature_chance'] }}%</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/magic-find.png" height="20" width="20"> <span style="color:#3BDDDD"><strong>Magic Find</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_magic_find }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['magic_find'] }}</samp>
                         </div>
                     </div>
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4"><img src="/static/img/icons/pet-luck.png" height="20" width="20"> <span style="color:#FD64DE"><strong>Pet Luck</strong></span></div>
-                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ last_played_profile_stats_pet_luck }}</samp>
+                        <div class="col-12   order-md-2 col-md" style="font-size: 90%"><samp>{{ profile_attributes['pet_luck'] }}</samp>
                         </div>
                     </div>
                     <div class="additional-stat"><span class="stat-name">Last Area: </span><span class="stat-value">Hub</span></div>
@@ -179,18 +179,18 @@
             </div>
             <div class="card mb-3">
                 <div class="card-header py-1" align="center"><strong>Skills</strong></div>
-                    <div>
+                    <div style="padding-left: 30px">
                     <div id="other_skills">
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['taming']['level'] < 50 %}
-                            <div class="skill xp-skill ">
+                        {% if profile_skills['taming']['level'] < 50 %}
+                            <div class="skill xp-skill">
                                 <div class="skill-icon"><div class="item-icon icon-383_0_12"></div></div>
-                                <div class="skill-name">Taming <span class="skill-level">{{ last_played_profile_skills['taming']['level'] }}</span></div>
+                                <div class="skill-name">Taming <span class="skill-level">{{ profile_skills['taming']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['taming']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['taming']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['taming']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['taming']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['taming']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['taming']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                 <div class="skill-bar" data-skill="Taming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['taming']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['taming']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -220,15 +220,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['farming']['level'] < 50 %}
+                        {% if profile_skills['farming']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-294_0"></div></div>
-                                <div class="skill-name">Farming <span class="skill-level">{{ last_played_profile_skills['farming']['level'] }}</span></div>
+                                <div class="skill-name">Farming <span class="skill-level">{{ profile_skills['farming']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['farming']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['farming']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['farming']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['farming']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['farming']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['farming']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['farming']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['farming']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -258,15 +258,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['mining']['level'] < 50 %}
+                        {% if profile_skills['mining']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-274_0"></div></div>
-                                <div class="skill-name">Mining <span class="skill-level">{{ last_played_profile_skills['mining']['level'] }}</span></div>
+                                <div class="skill-name">Mining <span class="skill-level">{{ profile_skills['mining']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['mining']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['mining']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['mining']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['mining']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['mining']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['mining']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['mining']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['mining']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -296,15 +296,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['combat']['level'] < 50 %}
+                        {% if profile_skills['combat']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-272_0"></div></div>
-                                <div class="skill-name">Combat <span class="skill-level">{{ last_played_profile_skills['combat']['level'] }}</span></div>
+                                <div class="skill-name">Combat <span class="skill-level">{{ profile_skills['combat']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['combat']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['combat']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['combat']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['combat']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['combat']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['combat']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -315,7 +315,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['combat']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['combat']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -335,15 +335,15 @@
 
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['foraging']['level'] < 50 %}
+                        {% if profile_skills['foraging']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-6_3"></div></div>
-                                <div class="skill-name">Foraging <span class="skill-level">{{ last_played_profile_skills['foraging']['level'] }}</span></div>
+                                <div class="skill-name">Foraging <span class="skill-level">{{ profile_skills['foraging']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['foraging']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['foraging']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['foraging']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['foraging']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['foraging']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['foraging']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['foraging']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['foraging']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -373,15 +373,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['fishing']['level'] < 50 %}
+                        {% if profile_skills['fishing']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-346_0"></div></div>
-                                <div class="skill-name">Fishing <span class="skill-level">{{ last_played_profile_skills['fishing']['level'] }}</span></div>
+                                <div class="skill-name">Fishing <span class="skill-level">{{ profile_skills['fishing']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['fishing']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['fishing']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['fishing']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['fishing']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['fishing']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['fishing']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -392,7 +392,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['fishing']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['fishing']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -411,15 +411,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['enchanting']['level'] < 50 %}
+                        {% if profile_skills['enchanting']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-116_0"></div></div>
-                                <div class="skill-name">Enchanting <span class="skill-level">{{ last_played_profile_skills['enchanting']['level'] }}</span></div>
+                                <div class="skill-name">Enchanting <span class="skill-level">{{ profile_skills['enchanting']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['enchanting']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['enchanting']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['enchanting']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['enchanting']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['enchanting']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['enchanting']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -430,7 +430,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['enchanting']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['enchanting']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -449,15 +449,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['alchemy']['level'] < 50 %}
+                        {% if profile_skills['alchemy']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-379_0"></div></div>
-                                <div class="skill-name">Alchemy <span class="skill-level">{{ last_played_profile_skills['alchemy']['level'] }}</span></div>
+                                <div class="skill-name">Alchemy <span class="skill-level">{{ profile_skills['alchemy']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['alchemy']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['alchemy']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['alchemy']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['alchemy']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['alchemy']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['alchemy']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -468,7 +468,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['alchemy']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['alchemy']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -486,16 +486,16 @@
                     </div>
                     {% endif %}
 
-                    {% if 'carpentry' in last_played_profile_skills %}
-                        {% if last_played_profile_skills['carpentry']['level'] < 50 %}
+                    {% if 'carpentry' in profile_skills %}
+                        {% if profile_skills['carpentry']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-58_0"></div></div>
-                                <div class="skill-name">Carpentry <span class="skill-level">{{ last_played_profile_skills['carpentry']['level'] }}</span></div>
+                                <div class="skill-name">Carpentry <span class="skill-level">{{ profile_skills['carpentry']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['carpentry']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['carpentry']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['carpentry']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['carpentry']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['carpentry']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['carpentry']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -506,7 +506,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['carpentry']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['carpentry']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -525,15 +525,15 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if last_played_profile_skills['runecrafting']['level'] < 50 %}
+                        {% if profile_skills['runecrafting']['level'] < 50 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
-                                <div class="skill-name">Runecrafting <span class="skill-level">{{ last_played_profile_skills['runecrafting']['level'] }}</span></div>
+                                <div class="skill-name">Runecrafting <span class="skill-level">{{ profile_skills['runecrafting']['level'] }}</span></div>
                                 <div class="skill-bar" data-skill="Taming">
-                                    <div class="skill-progress-bar" style="width:{{ last_played_profile_skills['runecrafting']['progress'] * 100 }}%"></div>
+                                    <div class="skill-progress-bar" style="width:{{ profile_skills['runecrafting']['progress'] * 100 }}%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['runecrafting']['xpCurrent']) }} XP /
-                                        {{ human_format(last_played_profile_skills['runecrafting']['xpForNext']) }} XP
+                                        {{ human_format(profile_skills['runecrafting']['xpCurrent']) }} XP /
+                                        {{ human_format(profile_skills['runecrafting']['xpForNext']) }} XP
                                     </div>
                                 </div>
                             </div>
@@ -544,7 +544,7 @@
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">
-                                        {{ human_format(last_played_profile_skills['runecrafting']['xpCurrent']) }} XP
+                                        {{ human_format(profile_skills['runecrafting']['xpCurrent']) }} XP
                                     </div>
                                 </div>
                             </div>

@@ -437,7 +437,7 @@ html.no-webp #bg_blur{
 }
 
 .skill{
-    width: calc((70vw - 260px) / 2 - 60px);
+    width: 49%;
     display: inline-block;
     position: relative;
     height: 36px;

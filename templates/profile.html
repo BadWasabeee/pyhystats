@@ -111,7 +111,17 @@
     <div class="row">
         <div class="col-lg-8 order-lg-2">
             <div class="card mb-3">
-                <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for</span> <strong>{{ profile_name }}</strong></h6></div>
+             <div class="card-header py-1">
+                 <div align="center">
+                     <span class="text-on"><span class="text-stats-for">Stats for </span> <span id="stats_for_player"> {{ username }} </span> on </span><div tabindex="5" id="stats_for_profile">
+                            {{ profile_name }}
+                        <div id="other_profiles">
+                          <a class="goto" href="/stats/ba88ef0e3486423082eba5ab26120a78/ab94542cd1d24aa7982df2a955bacc60">Apple<div class="goto-last-played">last played 21 days ago</div></a>
+                        </div>
+                    </div>
+                </div>
+             </div>
+<!--                <div class="card-header py-1"><h6 align="center" style="margin-top: 3px;margin-bottom: 3px"><span style="font-weight: lighter">Statistics for </span><<strong>{{ profile_name }}</strong></h6></div>-->
                 <div class="card-body py-1">
                     <div class="row no-gutters align-items-center">
                         <div class="col      order-md-1 col-md-4">
@@ -525,7 +535,7 @@
                     {% endif %}
 
                     {% if skill_info_api_check == "enabled" %}
-                        {% if profile_skills['runecrafting']['level'] < 50 %}
+                        {% if profile_skills['runecrafting']['level'] < 25 %}
                             <div class="skill xp-skill ">
                                 <div class="skill-icon"><div class="item-icon icon-378_0"></div></div>
                                 <div class="skill-name">Runecrafting <span class="skill-level">{{ profile_skills['runecrafting']['level'] }}</span></div>
@@ -540,7 +550,7 @@
                         {% else %}
                             <div class="skill xp-skill maxed-skill">
                                 <div class="skill-icon"><div class="item-icon icon-378_0"></div><div class="piece-shine"></div></div>
-                                <div class="skill-name">Runecrafting <span class="skill-level">50</span></div>
+                                <div class="skill-name">Runecrafting <span class="skill-level">25</span></div>
                                 <div class="skill-bar" data-skill="Farming">
                                     <div class="skill-progress-bar" style="width:100%"></div>
                                     <div class="skill-progress-text">

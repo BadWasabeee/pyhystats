@@ -1,4 +1,4 @@
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 import os
 import hypixel
 from mojang import MojangAPI
@@ -26,9 +26,13 @@ def discord():
     return redirect('https://discord.gg/K92sX47')
 
 
-@app.route('/profile/')
-def profile():
-    raw_username = request.args.get('username')
+@app.route('/profile/', methods=["GET"])
+def limbo():
+    return redirect(url_for('profile', raw_username=request.args.get('username')))
+
+
+@app.route('/stats/<raw_username>')
+def profile(raw_username):
     uuid = MojangAPI.get_uuid(raw_username)
     if uuid:
         try:
@@ -66,6 +70,7 @@ def profile():
                             " minutes " + str(int(round(number_from_now_secs[0], 0))) + " seconds ")
 
             links = requests.get('https://api.slothpixel.me/api/players/' + raw_username).json()['links']
+            print(links)
             network_linked_socialmedia_number = 0
             for SocialMedias in links:
                 Social = links[SocialMedias]
@@ -187,6 +192,10 @@ def profile():
                 rank_plus_color = 'mc-white'
 
             if 'SkyBlock' in str(player.get_stats()):
+                # def profile_stats(profile_id):
+                #     profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name + "/" + profile_id).json()
+                #     return profile
+
                 profile_id = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name).json()['id']
                 profile = requests.get('https://api.slothpixel.me/api/skyblock/profile/' + name + "/" + profile_id).json()
                 profile_name = player.get_stats()['SkyBlock']['profiles'][profile_id]['cute_name']
@@ -217,8 +226,8 @@ def profile():
                                    DISCORD=DISCORD, HYPIXEL=HYPIXEL, is_online=is_online,
                                    rank_plus_color=rank_plus_color, is_online_gameType=is_online_gameType,
                                    last_logout_from_now=last_logout_from_now, last_login_from_now=last_login_from_now,
-                                   human_format=human_format, skill_info_api_check=skill_info_api_check, profile=profile,
-                                   profile_name=profile_name, profile_attributes=profile_attributes,
+                                   human_format=human_format, skill_info_api_check=skill_info_api_check,
+                                   profile=profile, profile_name=profile_name, profile_attributes=profile_attributes,
                                    profile_skills=profile_skills, is_online_mode=is_online_mode)
 
         except hypixel.PlayerNotFoundException:
